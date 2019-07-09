@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateDescription name="appcomponent" basedOn="codeTemplate" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.1.762" 
+                     version="1.1" isRelevantForProjectNamespace="true" xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+  <Arguments>
+    <Argument name="path" short-name="p" help="Absolute path to the project settings file." default="./plcnext.proj" has-value="true"/>
+    <Argument name="namespace" default="$(project.namespace)">
+      <ValueRestriction>
+        <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
+      </ValueRestriction>
+    </Argument>
+    <Argument name="name" default="$(root.name.format.lastNamespacePart.format.escapeProjectName)Component"/>
+  </Arguments>
+  <Relationship name="project" type="appproject"/>
+  <File name="$(name).cpp" template="Component.cpp" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
+  <File name="$(name).hpp" template="Component.hpp" key="component" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
+  <GeneratedFile name="$(name).meta.cpp" template="Component.meta.cpp"
+				   generator="Code" path="$(template.files.component.path.format.relativePath)"
+				   aggregated="generated.cpp"/>
+  <Description>Create a new app-component inside the app-project.</Description>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="NewComponent"/>
+      <Argument name="path" value="Path/To/Project"/>
+    </Arguments>
+    <Description>creates a new app-component 'NewComponent' in the 'src' directory with the root namespace of the project</Description>
+  </Example>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="NewComponent"/>
+      <Argument name="namespace" value="SomeNamespace"/>
+      <Argument name="output" value="Folder"/>
+      <Argument name="path" value="Path/To/Project"/>
+    </Arguments>
+    <Description>creates a new app-component 'NewComponent' in the 'src/Folder' directory of the project with the namespace 'SomeNamespace'</Description>
+  </Example>
+</TemplateDescription>
