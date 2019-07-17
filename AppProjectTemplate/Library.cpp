@@ -1,5 +1,6 @@
 #include "$(template.files.library.format.include)"
 #include "Arp/System/Core/CommonTypeName.hxx"
+#include "Arp/Plc/Commons/Meta/TypeSystem/TypeSystem.h"
 $([foreach]component[in]related[of-type]appcomponent)
 #include "$(component.template.files.component.format.include)"
 $([end-foreach])
@@ -11,7 +12,7 @@ $(name.format.lastNamespacePart.format.escapeProjectName)Library::$(name.format.
     , typeDomain(CommonTypeName<$(name.format.lastNamespacePart.format.escapeProjectName)Library>().GetNamespace())
 {
 $([foreach]component[in]related[of-type]appcomponent)
-    this->componentFactory.AddFactoryMethod(CommonTypeName<::$(component.fullName)>(), &::$(component.fullName)::Create);
+    this->componentFactory.AddFactoryMethod(TypeName<::$(component.fullName)>(), &::$(component.fullName)::Create);
 $([end-foreach])
     this->InitializeTypeDomain();
 }

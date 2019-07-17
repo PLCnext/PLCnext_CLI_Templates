@@ -34,8 +34,8 @@
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
 				   generator="code" aggregated="generated.hpp"
 				   key="library"/>
-  <GeneratedFile name="acf.config" template="acf.config"
-				   generator="config"/>
+  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" template="acf.config"
+				   generator="config" path="../../bin"/>
   <Description>Create a new app-project.</Description>
   <Example>
     <Arguments>
