@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TemplateDescription name="appproject" isRoot="true" basedOn="template" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
+<TemplateDescription name="appproject" isRoot="true" basedOn="baseproject" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
                      xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier">
   <Arguments>
-    <Argument name="name" default="$(output.format.directoryName.format.escapeProjectName)">
-      <ValueRestriction>
-        <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
-      </ValueRestriction>
-    </Argument>
-    <Argument name="output" default="$([if-specified]name)$(name)$([else])$(active-directory)$([end-if-specified])"/>
-    <Argument name="namespace" has-value="true" short-name="s" help="The root namespace for the app-project. It is used to resolve the initial component namespace." default="$(name)">
-      <ValueRestriction>
-        <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
-      </ValueRestriction>
-    </Argument>
     <Argument name="component" has-value="true" short-name="c" help="The name of the component which will be automatically created." default="$(name.format.lastNamespacePart)Component">
       <ValueRestriction>
         <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
@@ -25,15 +14,9 @@
       <Argument name="namespace" value="$(namespace)"/>
     </Arguments>
   </AddTemplate>
-  <File name="CMakeLists.txt" template="CMakeLists.txt"/>
   <File name="plcnext.proj" template=".proj"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
-				   generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp"
 				   generator="code" aggregated="generated.cpp"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
-				   generator="code" aggregated="generated.hpp"
-				   key="library"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" template="acf.config"
 				   generator="config" path="../../bin"/>
   <Description>Create a new app-project.</Description>

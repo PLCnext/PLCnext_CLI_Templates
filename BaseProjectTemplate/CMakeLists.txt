@@ -11,8 +11,8 @@ endif()
 set (WILDCARD_SOURCE *.cpp)
 set (WILDCARD_HEADER *.h *.hpp *.hxx)
 
-file(GLOB_RECURSE Headers src/${WILDCARD_HEADER} intermediate/code/${WILDCARD_HEADER})
-file(GLOB_RECURSE Sources src/${WILDCARD_SOURCE} intermediate/code/${WILDCARD_SOURCE})
+file(GLOB_RECURSE Headers CONFIGURE_DEPENDS src/${WILDCARD_HEADER} intermediate/code/${WILDCARD_HEADER})
+file(GLOB_RECURSE Sources CONFIGURE_DEPENDS src/${WILDCARD_SOURCE} intermediate/code/${WILDCARD_SOURCE})
 add_library($(name) SHARED ${Headers} ${Sources})
 
 #######################################################################################
@@ -53,11 +53,9 @@ target_link_libraries($(name) PRIVATE ArpDevice ArpProgramming)
 
 ################# install ############################################################
 
-string(REGEX REPLACE "^.*\\(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*$" "\\1" _ARP_SHORT_DEVICE_VERSION ${ARP_DEVICE_VERSION})
 install(TARGETS $(name)
-    LIBRARY DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/lib
-    ARCHIVE DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/lib
-    RUNTIME DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/bin)
-unset(_ARP_SHORT_DEVICE_VERSION)
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin)
 
 #######################################################################################
