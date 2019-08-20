@@ -8,7 +8,7 @@
       </ValueRestriction>
     </Argument>
     <Argument name="output" default="$([if-specified]name)$(name)$([else])$(active-directory)$([end-if-specified])"/>
-    <Argument name="namespace" has-value="true" short-name="s" help="The root namespace for the app-project. It is used to resolve the initial component namespace." default="$(name)">
+    <Argument name="namespace" has-value="true" short-name="s" default="$(name)">
       <ValueRestriction>
         <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
       </ValueRestriction>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TemplateDescription name="appproject" isRoot="true" basedOn="baseproject" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
+<TemplateDescription name="acfproject" isRoot="true" basedOn="baseproject" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
                      xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier">
   <Arguments>
     <Argument name="component" has-value="true" short-name="c" help="The name of the component which will be automatically created." default="$(name.format.lastNamespacePart)Component">
@@ -7,8 +7,9 @@
         <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
       </ValueRestriction>
     </Argument>
+    <Argument name="namespace" help="The root namespace for the acfproject. It is used to resolve the initial component namespace." />
   </Arguments>
-  <AddTemplate template="appcomponent">
+  <AddTemplate template="acfcomponent">
     <Arguments>
       <Argument name="name" value="$(component)"/>
       <Argument name="namespace" value="$(namespace)"/>
@@ -19,12 +20,12 @@
 				   generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" template="acf.config"
 				   generator="config" path="../../bin"/>
-  <Description>Create a new app-project.</Description>
+  <Description>Create a new acfproject.</Description>
   <Example>
     <Arguments>
       <Argument name="name" value="ProjectName"/>
     </Arguments>
-    <Description>creates a new app-project in the directory 'ProjectName' with the component 'ProjectNameComponent' in the namespace 'ProjectName'</Description>
+    <Description>creates a new acfproject in the directory 'ProjectName' with the component 'ProjectNameComponent' in the namespace 'ProjectName'</Description>
   </Example>
   <Example>
     <Arguments>
@@ -32,6 +33,6 @@
       <Argument name="component" value="SomeComponent"/>
       <Argument name="namespace" value="SomeNamespace"/>
     </Arguments>
-    <Description>creates a new app-project in the directory 'ProjectName' with the component 'SomeComponent' in the namespace 'SomeNamespace'</Description>
+    <Description>creates a new acfproject in the directory 'ProjectName' with the component 'SomeComponent' in the namespace 'SomeNamespace'</Description>
   </Example>
 </TemplateDescription>

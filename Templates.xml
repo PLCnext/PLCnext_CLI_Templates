@@ -7,7 +7,7 @@
 	<Include type="Template">ProjectTemplate/CodeTemplateDescription.xml</Include>
 	<Include type="Fields">ProjectTemplate/FieldTemplates.xml</Include>
 	<Include type="Format">ProjectTemplate/FormatTemplates.xml</Include>
-	<Include type="Template">AppProjectTemplate/TemplateDescription.xml</Include>
+	<Include type="Template">AcfProjectTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">BaseProjectTemplate/TemplateDescription.xml</Include>
-	<Include type="Template">AppComponentTemplate/TemplateDescription.xml</Include>
+	<Include type="Template">AcfComponentTemplate/TemplateDescription.xml</Include>
 </Templates>

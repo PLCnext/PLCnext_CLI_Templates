@@ -12,6 +12,7 @@
 	      <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
 	    </ValueRestriction>
 	  </Argument>
+    <Argument name="namespace" help="The root namespace for the $(template.name). It is used to resolve the initial component and program namespace." />
 	</Arguments>
 	<AddTemplate template="component">
 		<Arguments>
@@ -33,7 +34,7 @@
 				   generator="Config"/>
 	<GeneratedFile name="$(namespace).typemeta" template="Library.typemeta" 
 				   generator="Config"/>
-  <Description>Create a new project.</Description>
+  <Description>Create a new project. This project is a plmproject.</Description>
   <Example>
     <Arguments>
       <Argument name="name" value="ProjectName"/>

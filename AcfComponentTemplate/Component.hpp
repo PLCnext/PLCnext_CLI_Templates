@@ -12,7 +12,7 @@ using namespace Arp;
 using namespace Arp::System::Acf;
 using namespace Arp::Plc::Commons::Meta;
 
-//$(settings.AttributePrefix)appcomponent
+//$(settings.AttributePrefix)acfcomponent
 class $(name) : public ComponentBase, public MetaComponentBase, private Loggable<$(name)>
 {
 public: // typedefs
