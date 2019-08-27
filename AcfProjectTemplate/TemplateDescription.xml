@@ -16,6 +16,8 @@
     </Arguments>
   </AddTemplate>
   <File name="plcnext.proj" template=".proj"/>
+  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
+                 generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp"
 				   generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" template="acf.config"
