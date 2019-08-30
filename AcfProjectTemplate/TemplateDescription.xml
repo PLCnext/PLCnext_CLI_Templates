@@ -16,12 +16,11 @@
     </Arguments>
   </AddTemplate>
   <File name="plcnext.proj" template=".proj"/>
+  <File name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" deployPath="deploy" template="acf.config" path="src"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
                  generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp"
 				   generator="code" aggregated="generated.cpp"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" template="acf.config"
-				   generator="config" path="../../bin"/>
   <Description>Create a new acfproject.</Description>
   <Example>
     <Arguments>

@@ -50,4 +50,14 @@
     </Arguments>
     <Description>creates a new project in the directory 'ProjectName' with the component 'SomeComponent', the program 'SomeProgram' both in the namespace 'SomeNamespace'</Description>
   </Example>
+  <DeployPostStep identifier="LibraryBuilderDeployStep">
+    <Arguments>
+      <Argument name="metapath" has-value="true" short-name="m" help="Directory where the library meta files are located."/>
+      <Argument name ="compilationpath" has-value="true" short-name="c" help="Path to the compilation output file(s), if different from &lt;projectname&gt;/bin."/>
+      <Argument name="id" has-value="true" short-name="i" help="The GUID for the library."/>
+      <Argument name ="externallibraries" has-value="true" short-name="e" multiplicity="OneOrMore" separator=" " help="List of external libraries separated by ',' to add to library. For multibinary libraries: specify list of libraries separated by ',' which then will be added for every target or specify per target a list of libraries."/>
+      <Argument name ="output" has-value="true" short-name="o" help="The path where the files will be deployed in. Default is the 'bin' directory. Relative paths are relative to the directory defined with the '--path' option."/>
+      <Argument name="target" has-value="true" short-name="t" multiplicity="OneOrMore" separator=" " help="List of targets for which files are deployed. Targets are separated by ' '. Targets need to be defined in the following format: targetname(,targetversion(,path/to/binary)). The version is optional and is only needed if there are multiple versions of a target in the registered SDKs. If the binaries are not located in the standard path, the path to the binaries can be specified after the version. If used, this option overrides the targets defined in the project. Please consider, that the actual binaries are deployed in the build step. Therefore if they are not built for a specific target, neither are they built here."/>
+    </Arguments>
+  </DeployPostStep>
 </TemplateDescription>
