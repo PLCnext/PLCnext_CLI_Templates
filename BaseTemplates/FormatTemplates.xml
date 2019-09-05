@@ -24,7 +24,7 @@
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="&quot;&quot;"/>
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="&quot;&quot;"/>
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString" converted="&quot;&quot;"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="&quot;&quot;"/>
 		<TemplateConversion template="CTN&lt;$(fullName)&gt;()"/>
 	</FormatTemplate>
   <!--Implicitly used for arpDataType conversion which is programmed-->
@@ -52,7 +52,7 @@
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="IecDateTime64"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="IecTimeOfDay"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="IecTimeOfDay64"/>
-    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString" converted="StaticString"/>
+    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
     <RegexConversion pattern="(.*)" converted="unkown($(1))"/>
   </FormatTemplate>
 	<FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
@@ -94,14 +94,9 @@
   <FormatTemplate name="startUppercase">
     <RegexConversion pattern="(?&lt;value&gt;.+)" converted="\u$(value)"/>
   </FormatTemplate>
-  <FormatTemplate name="convertAngleToSquare">
-    <TemplateConversion template="$(value.format.convertAngleToSquareStart.format.convertAngleToSquareEnd)"/>
-  </FormatTemplate>
-  <FormatTemplate name="convertAngleToSquareStart" multiplicity="OneOrMore" seperator="[">
-    <Split>&lt;</Split>
-  </FormatTemplate>
-  <FormatTemplate name="convertAngleToSquareEnd" multiplicity="OneOrMore" seperator="]">
-    <Split>&gt;</Split>
+  <FormatTemplate name="convertStaticString">
+    <RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="StaticString"/>
+    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticString$(1)"/>
   </FormatTemplate>
   <FormatTemplate name="escapeXmlNames">
     <TemplateConversion template="$(value.format.escapeLt.format.escapeGt.format.escapeQuote.format.escapeApos.format.escapeAmp)"/>

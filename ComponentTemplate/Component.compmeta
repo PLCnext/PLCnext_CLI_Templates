@@ -7,8 +7,8 @@ $([foreach]program[in]related[of-type]program)
 $([end-foreach])
     </ProgramIncludes>
     <Ports>
-$([foreach]port[in]ports)
-      <Port name="$(port.name.format.escapeXmlNames)" type="$(port.format.typeMetaDataFormat.format.convertAngleToSquare)" attributes="$(port.attributes.format.metaAttributes)" dimensions="$(port.multiplicity.format.dimensions)" />
+$([foreach]port[in]ports.expandHiddenTypes)
+      <Port name="$(port.name.format.escapeXmlNames)" type="$(port.format.typeMetaDataFormat.format.convertStaticString)" attributes="$(port.attributes.format.metaAttributes)" dimensions="$(port.multiplicity.format.dimensions)" />
 $([end-foreach])
     </Ports>
   </Component>

@@ -22,7 +22,7 @@ using namespace Arp::Plc::Commons::Meta;
             {
 $([foreach]struct[in]portStructs)
                 {   // TypeDefinition: $(struct.fullName)
-                    DataType::Struct, $(struct.format.ctn), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), StandardAttribute::None,
+                    DataType::Struct, $(struct.format.ctn), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
