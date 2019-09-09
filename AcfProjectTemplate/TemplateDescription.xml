@@ -20,8 +20,6 @@
   <File name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" deployPath="." template="acf.config" path="src"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
                  generator="code" aggregated="generated.cpp"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp"
-				   generator="code" aggregated="generated.cpp"/>
   <Description>Create a new acfproject.</Description>
   <Example>
     <Arguments>
