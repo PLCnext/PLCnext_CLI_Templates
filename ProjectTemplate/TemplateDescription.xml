@@ -30,10 +30,10 @@
   <File name="plcnext.proj" template=".proj"/>
 	<GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp" 
 				   generator="Code" aggregated="generated.cpp"/>
-	<GeneratedFile name="$(namespace).libmeta" template="Library.libmeta" 
-				   generator="Config"/>
-	<GeneratedFile name="$(namespace).typemeta" template="Library.typemeta" 
-				   generator="Config"/>
+	<GeneratedFile name="$(namespace).libmeta" template="Library.libmeta"
+				   generator="Config" deployPath="."/>
+	<GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
+				   generator="Config" deployPath="."/>
   <Description>Create a new project. This project is a plmproject.</Description>
   <Example>
     <Arguments>
@@ -52,13 +52,37 @@
   </Example>
   <DeployPostStep identifier="LibraryBuilderDeployStep">
     <Arguments>
-      <Argument name="metapath" has-value="true" short-name="m" help="Directory where the library meta files are located."/>
-      <Argument name ="compilationpath" has-value="true" short-name="c" help="Path to the compilation output file(s), if different from &lt;projectname&gt;/bin."/>
-      <Argument name="id" has-value="true" short-name="i" help="The GUID for the library."/>
-      <Argument name ="externallibraries" has-value="true" short-name="e" multiplicity="OneOrMore" separator=" " help="List of external libraries separated by ',' to add to library. For multibinary libraries: specify list of libraries separated by ',' which then will be added for every target or specify per target a list of libraries."/>
+      <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
       <Argument name ="output" has-value="true" short-name="o" help="The path where the files will be deployed in. Default is the 'bin' directory. Relative paths are relative to the directory defined with the '--path' option."/>
-      <Argument name="target" has-value="true" short-name="t" multiplicity="OneOrMore" separator=" " help="List of targets for which files are deployed. Targets are separated by ' '. Targets need to be defined in the following format: targetname(,targetversion(,path/to/binary)). The version is optional and is only needed if there are multiple versions of a target in the registered SDKs. If the binaries are not located in the standard path, the path to the binaries can be specified after the version. If used, this option overrides the targets defined in the project. Please consider, that the actual binaries are deployed in the build step. Therefore if they are not built for a specific target, neither are they built here."/>
+      <Argument name="target" has-value="true" short-name="t" multiplicity="OneOrMore" separator=" " help="List of targets for which files are deployed. Targets are separated by ' '. Targets need to be defined in the following format: targetname(,targetversion). The version is optional and is only needed if there are multiple versions of a target in the registered SDKs. If used, this option overrides the targets defined in the project. Please consider, that the actual binaries are deployed in the build step. Therefore if they are not built for a specific target, neither are they built here."/>
       <Argument name="sources" has-value="true" short-name="s" multiplicity="OneOrMore" separator="," help="The path of the source directories separated by ','. Default is the 'src' directory if such a directory exists. If not, the directory defined with the '--path' option is used. Relative paths are relative to the directory defined with the '--path' option. If any path contains a ' ' quotation marks should be used around all paths, e.g. &quot;path1,path With Space,path2&quot;."/>
     </Arguments>
+    <Example>
+      <Arguments>
+        <Argument name="path" value="PlmProject"/>
+      </Arguments>
+      <Description>Deploy a .pcwlx library for 'PlmProject'</Description>
+    </Example>
+    <Example>
+      <Arguments>
+        <Argument name="path" value="PlmProject"/>
+        <Argument name="files" value="lib/libPlmProject.so|."/>
+      </Arguments>
+      <Description>Deploy 'PlmProject' with the custom library path 'lib/libPlmProject.so'</Description>
+    </Example>
+    <Example>
+      <Arguments>
+        <Argument name="path" value="PlmProject"/>
+        <Argument name="files" value="extern/libA.so|. extern/libB.so|."/>
+      </Arguments>
+      <Description>Deploy 'PlmProject' with the external libraries 'libA.so' and 'libB.so'. Automatic external library detection is disabled with that</Description>
+    </Example>
+    <Example>
+      <Arguments>
+        <Argument name="path" value="PlmProject"/>
+        <Argument name="files" value="meta/device/*|."/>
+      </Arguments>
+      <Description>Deploy 'PlmProject' with the custom metadata path 'meta/device'</Description>
+    </Example>
   </DeployPostStep>
 </TemplateDescription>

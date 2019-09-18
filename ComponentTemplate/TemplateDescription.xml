@@ -10,7 +10,7 @@
 				   generator="Code" path="$(template.files.component.path.format.relativePath)"
 				   aggregated="generated.hpp" key="programProvider"/>
 	<GeneratedFile name="$(name).compmeta" template="Component.compmeta"
-				   generator="Config" path="$(name)"/>
+				   generator="Config" path="$(name)" deployPath="$(name)"/>
   <GeneratedFile name="$(name).meta.cpp" template="Component.meta.cpp"
                  generator="Code" path="$(template.files.component.path.format.relativePath)"
                  aggregated="generated.cpp"/>
