@@ -45,18 +45,6 @@ public: // static factory operations
 
 private: // fields
 
-public: /* Ports
-           =====
-           Component ports are defined in the following way:
-           //#port
-           //#name(NameOfPort)
-           boolean portField;
-
-           The name comment defines the name of the port and is optional. Default is the name of the field.
-           Attributes which are defined for a component port are IGNORED. If component ports with attributes
-           are necessary, define a single structure port where attributes can be defined foreach field of the
-           structure.
-        */
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -71,5 +59,7 @@ inline IComponent::Ptr $(name)::Create(Arp::System::Acf::IApplication& applicati
 {
     return IComponent::Ptr(new $(name)(application, name));
 }
+
+inline void $(name)::RegisterComponentPorts(){}
 
 $(namespace.format.end) // end of namespace $(namespace)

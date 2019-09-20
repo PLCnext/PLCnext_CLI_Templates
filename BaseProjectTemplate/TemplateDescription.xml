@@ -15,9 +15,4 @@
     </Argument>
   </Arguments>
   <File name="CMakeLists.txt" template="../BaseProjectTemplate/CMakeLists.txt"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="../BaseProjectTemplate/Library.cpp"
-				   generator="code" aggregated="generated.cpp"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="../BaseProjectTemplate/Library.hpp"
-				   generator="code" aggregated="generated.hpp"
-				   key="library"/>
 </TemplateDescription>
