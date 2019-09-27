@@ -1,6 +1,6 @@
 ﻿#include "Arp/System/Core/Arp.h"
 #include "Arp/Plc/Commons/Meta/TypeSystem/TypeSystem.h"
-$([no-dublicate-lines])
+$([no-duplicate-lines])
 $([foreach]program[in]hierarchy[of-type]program)
 #include "$(program.template.files.program.format.include)"
 $([end-foreach])
@@ -8,7 +8,7 @@ $([foreach]struct[in]portStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
 #include "$(template.files.library.format.include)"
-$([end-no-dublicate-lines])
+$([end-no-duplicate-lines])
 
 $(namespace.format.start)
 
