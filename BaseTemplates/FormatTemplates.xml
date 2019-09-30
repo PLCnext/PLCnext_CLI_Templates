@@ -91,6 +91,9 @@
   <FormatTemplate name="cppFullName" multiplicity="OneOrMore" seperator="::">
     <Split>.</Split>
   </FormatTemplate>
+  <FormatTemplate name="namespaceWithUnderscore" multiplicity="OneOrMore" seperator="_">
+    <Split>::</Split>
+  </FormatTemplate>
   <FormatTemplate name="startUppercase">
     <RegexConversion pattern="(?&lt;value&gt;.+)" converted="\u$(value)"/>
   </FormatTemplate>

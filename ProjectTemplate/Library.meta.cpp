@@ -14,6 +14,17 @@ $(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Meta;
 
+$([foreach]struct[in]portStructs)
+$([foreach]field[in]struct.fields)
+    static const FieldDefinition $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName)("$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes));
+$([end-foreach])
+$([end-foreach])
+$([foreach]program[in]hierarchy[of-type]program)
+$([foreach]port[in]program.ports)
+    static const FieldDefinition $(program.fullName.format.namespaceWithUnderscore)_$(port.fieldName)("$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity) }, $(port.attributes.format.standardAttributes));
+$([end-foreach])
+$([end-foreach])
+    
     void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain()
     {
         this->typeDomain.AddTypeDefinitions
@@ -26,7 +37,7 @@ $([foreach]struct[in]portStructs)
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
-                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes) },
+                        $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName),
 $([end-foreach])
                     }
                 },
@@ -37,7 +48,7 @@ $([foreach]program[in]hierarchy[of-type]program)
                     {
                         // FieldDefinitions:
 $([foreach]port[in]program.ports)
-                        { "$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity) }, $(port.attributes.format.standardAttributes) },
+                        $(program.fullName.format.namespaceWithUnderscore)_$(port.fieldName),
 $([end-foreach])
                     }
                 },
