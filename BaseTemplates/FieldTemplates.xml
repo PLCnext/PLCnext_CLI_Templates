@@ -17,6 +17,7 @@
 			<Enumeration>ProfiCloud</Enumeration>
 			<Enumeration>Archive</Enumeration>
 		  <Enumeration>None</Enumeration>
+		  <Enumeration>Hidden</Enumeration>
 		</ValueRestriction>
 	</FieldTemplate>
 </FieldTemplates>

@@ -11,21 +11,7 @@
 			<Enumeration>ProfiCloud</Enumeration>
 			<Enumeration>Archive</Enumeration>
 		  <Enumeration>None</Enumeration>
-		</ValueRestriction>
-	</TypeTemplate>
-	<TypeTemplate name="attributes" has-value="true" multiplicity="OneOrMore" split="|" default-value="None"
-                context="component/field">
-		<ValueRestriction ignore-case="true">
-			<Enumeration>Hidden</Enumeration>
-			<Enumeration>Input</Enumeration>
-			<Enumeration>Output</Enumeration>
-			<Enumeration>ReadOnly</Enumeration>
-			<Enumeration>Retain</Enumeration>
-			<Enumeration>Opc</Enumeration>
-			<Enumeration>Ehmi</Enumeration>
-			<Enumeration>ProfiCloud</Enumeration>
-			<Enumeration>Archive</Enumeration>
-		  <Enumeration>None</Enumeration>
+      <Enumeration>Hidden</Enumeration>
 		</ValueRestriction>
 	</TypeTemplate>
 </TypeTemplates>
