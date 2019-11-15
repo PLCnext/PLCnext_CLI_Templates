@@ -11,4 +11,7 @@
     <Argument name="name" default="$(root.name.format.lastNamespacePart.format.escapeProjectName)Component"/>
   </Arguments>
   <Relationship name="project" type="baseproject"/>
+  <GeneratedFile name="$(name).meta.cpp" template="../BaseComponentTemplate/Component.meta.cpp"
+				   generator="Code" path="$(template.files.component.path.format.relativePath)"
+				   aggregated="generated.cpp"/>
 </TemplateDescription>

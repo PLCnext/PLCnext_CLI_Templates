@@ -23,6 +23,8 @@
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
 				   generator="code" aggregated="generated.hpp"
 				   key="library"/>
+  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp"
+				   generator="code" aggregated="generated.cpp"/>
   <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>
