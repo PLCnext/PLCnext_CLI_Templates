@@ -11,6 +11,12 @@ $(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Meta;
 
+$([foreach]struct[in]portStructs)
+$([foreach]field[in]struct.fields)
+    static const FieldDefinition $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName)("$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes));
+$([end-foreach])
+$([end-foreach])
+    
     void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain()
     {
         this->typeDomain.AddTypeDefinitions
@@ -19,11 +25,11 @@ using namespace Arp::Plc::Commons::Meta;
             {
 $([foreach]struct[in]portStructs)
                 {   // TypeDefinition: $(struct.fullName)
-                    DataType::Struct, $(struct.format.ctn), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), StandardAttribute::None,
+                    DataType::Struct, $(struct.format.ctn), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
-                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes) },
+                        $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName),
 $([end-foreach])
                     }
                 },
