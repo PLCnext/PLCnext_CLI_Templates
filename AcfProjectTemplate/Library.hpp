@@ -37,8 +37,4 @@ private:  // fields
 
 extern "C" ARP_CXX_SYMBOL_EXPORT ILibrary& ArpDynamicLibraryMain(AppDomain& appDomain);
 
-///////////////////////////////////////////////////////////////////////////////
-// inline methods of class $(name.format.lastNamespacePart.format.escapeProjectName)Library
-inline void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain() {}
-
 $(namespace.format.end) // end of namespace $(namespace)

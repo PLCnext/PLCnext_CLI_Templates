@@ -47,15 +47,18 @@ public: /* Ports
            =====
            Component ports are defined in the following way:
 
-           //#port
            //#attributes(Hidden)
-           struct PORTS {
+           struct Ports 
+           {
                //#name(NameOfPort)
                //#attributes(Input|Retain|Opc)
                Arp::boolean portField = false;
                // The GDS name is "<componentName>/NameOfPort" if the struct is declared as Hidden
                // otherwise the GDS name is "<componentName>/PORTS.NameOfPort"
-           } ports;
+           };
+           
+           //#port
+           Ports ports;
 
            Create one (and only one) instance of this struct.
            Apart from this single struct instance, there must be no other Component variables declared with the #port comment.

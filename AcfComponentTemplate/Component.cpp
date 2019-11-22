@@ -1,10 +1,16 @@
 #include "$(template.files.component.format.include)"
+#include "Arp/Plc/Commons/Domain/PlcDomainProxy.hpp"
 
 $(namespace.format.start)
 
+using namespace Arp::Plc::Commons::Domain;
+
 void $(name)::Initialize()
 {
-    // subscribe events from the event system (Es) here (use Arp::System::Es::EventManager)
+    // never remove next line
+    PlcDomainProxy::GetInstance().RegisterComponent(*this, false);
+    
+    // subscribe events from the event system (Nm) here
 }
 
 void $(name)::SubscribeServices()
@@ -19,6 +25,9 @@ void $(name)::LoadSettings(const String& /*settingsPath*/)
 
 void $(name)::SetupSettings()
 {
+    // never remove next line
+    MetaComponentBase::SetupSettings();
+
 	// setup firmware settings here
 }
 
@@ -34,22 +43,19 @@ void $(name)::LoadConfig()
 
 void $(name)::SetupConfig()
 {
-    // never remove next line
-    MetaComponentBase::SetupConfig();
-
     // setup project config here
 }
 
 void $(name)::ResetConfig()
 {
-    // never remove next line
-    MetaComponentBase::ResetConfig();
-
     // implement this inverse to SetupConfig() and LoadConfig()
 }
 
 void $(name)::Dispose()
 {
+    // never remove next line
+    MetaComponentBase::Dispose();
+
 	// implement this inverse to SetupSettings(), LoadSettings() and Initialize()
 }
 
