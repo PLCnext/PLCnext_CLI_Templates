@@ -4,7 +4,6 @@
 #include "Arp/System/Acf/IApplication.hpp"
 #include "Arp/Plc/Commons/Esm/ProgramComponentBase.hpp"
 #include "$(template.files.programProvider.format.include)"
-#include "$(root.template.files.library.name)"
 #include "Arp/Plc/Commons/Meta/MetaLibraryBase.hpp"
 #include "Arp/System/Commons/Logging.h"
 
@@ -69,15 +68,6 @@ public: /* Ports
            The members of the struct can be declared with any of the attributes allowed for a Program port.
         */
 };
-
-///////////////////////////////////////////////////////////////////////////////
-// inline methods of class $(name)
-inline $(name)::$(name)(IApplication& application, const String& name)
-: ComponentBase(application, ::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance(), name, ComponentCategory::Custom)
-, programProvider(*this)
-, ProgramComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace(), programProvider)
-{
-}
 
 inline IComponent::Ptr $(name)::Create(Arp::System::Acf::IApplication& application, const String& name)
 {

@@ -2,7 +2,6 @@
 #include "Arp/System/Core/Arp.h"
 #include "Arp/System/Acf/ComponentBase.hpp"
 #include "Arp/System/Acf/IApplication.hpp"
-#include "$(root.template.files.library.name)"
 #include "Arp/Plc/Commons/Meta/MetaComponentBase.hpp"
 #include "Arp/System/Commons/Logging.h"
 
@@ -72,14 +71,6 @@ public: /* Ports
         */
 
 };
-
-///////////////////////////////////////////////////////////////////////////////
-// inline methods of class $(name)
-inline $(name)::$(name)(IApplication& application, const String& name)
-: ComponentBase(application, ::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance(), name, ComponentCategory::Custom)
-, MetaComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace())
-{
-}
 
 inline IComponent::Ptr $(name)::Create(Arp::System::Acf::IApplication& application, const String& name)
 {

@@ -1,9 +1,16 @@
 #include "$(template.files.component.format.include)"
 #include "Arp/Plc/Commons/Domain/PlcDomainProxy.hpp"
+#include "$(root.template.files.library.name)"
 
 $(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Domain;
+
+$(name)::$(name)(IApplication& application, const String& name)
+: ComponentBase(application, ::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance(), name, ComponentCategory::Custom)
+, MetaComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace())
+{
+}
 
 void $(name)::Initialize()
 {

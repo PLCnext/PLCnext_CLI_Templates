@@ -1,7 +1,15 @@
 #include "$(template.files.component.format.include)"
 #include "Arp/Plc/Commons/Esm/ProgramComponentBase.hpp"
+#include "$(root.template.files.library.name)"
 
 $(namespace.format.start)
+
+$(name)::$(name)(IApplication& application, const String& name)
+: ComponentBase(application, ::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance(), name, ComponentCategory::Custom)
+, programProvider(*this)
+, ProgramComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace(), programProvider)
+{
+}
 
 void $(name)::Initialize()
 {
