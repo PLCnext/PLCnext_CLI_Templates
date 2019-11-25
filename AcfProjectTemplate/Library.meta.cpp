@@ -10,12 +10,6 @@ $([end-no-duplicate-lines])
 $(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Meta;
-
-$([foreach]struct[in]portStructs)
-$([foreach]field[in]struct.fields)
-    static const FieldDefinition $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName)("$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes));
-$([end-foreach])
-$([end-foreach])
     
     void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain()
     {
@@ -29,7 +23,7 @@ $([foreach]struct[in]portStructs)
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
-                        $(struct.fullName.format.namespaceWithUnderscore)_$(field.fieldName),
+                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes) },
 $([end-foreach])
                     }
                 },
