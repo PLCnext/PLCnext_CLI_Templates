@@ -99,7 +99,7 @@
     <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticString$(1)"/>
   </FormatTemplate>
   <FormatTemplate name="escapeXmlNames">
-    <TemplateConversion template="$(value.format.escapeLt.format.escapeGt.format.escapeQuote.format.escapeApos.format.escapeAmp)"/>
+    <TemplateConversion template="$(value.format.escapeAmp.format.escapeLt.format.escapeGt.format.escapeQuote.format.escapeApos)"/>
   </FormatTemplate>
   <FormatTemplate name="escapeLt" multiplicity="OneOrMore" seperator="&amp;lt;">
     <Split>&lt;</Split>
