@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Templates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+	<Include type="Template">MinimumProjectTemplate/TemplateDescription.xml</Include>
+	<Include type="Template">MinimumComponentTemplate/TemplateDescription.xml</Include>
+</Templates>
