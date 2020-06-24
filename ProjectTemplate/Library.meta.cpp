@@ -26,7 +26,7 @@ $([foreach]struct[in]portStructs)
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
-                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity) }, $(field.attributes.format.standardAttributes) },
+                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity.format.metaDimensions) }, $(field.attributes.format.standardAttributes) },
 $([end-foreach])
                     }
                 },
@@ -37,7 +37,7 @@ $([foreach]program[in]hierarchy[of-type]program)
                     {
                         // FieldDefinitions:
 $([foreach]port[in]program.ports)
-                        { "$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity) }, $(port.attributes.format.standardAttributes) },
+                        { "$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity.format.metaDimensions) }, $(port.attributes.format.standardAttributes) },
 $([end-foreach])
                     }
                 },

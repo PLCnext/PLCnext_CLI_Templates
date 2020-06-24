@@ -56,6 +56,19 @@
     <RegexConversion pattern="(.*)" converted="unkown($(1))"/>
   </FormatTemplate>
 	<FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
+	<FormatTemplate name="metaDimensions">
+    <TemplateConversion template="$(value.format.metaDimensionsSplitter.format.removeBracesFromSingle)"/>
+	</FormatTemplate>
+	<FormatTemplate name="metaDimensionsSplitter" multiplicity="OneOrMore" seperator=",">
+    <Split>,</Split>
+		<Prefix value="{"/>
+		<Suffix value="}"/>
+	</FormatTemplate>
+  <FormatTemplate name="removeBracesFromSingle">
+    <RegexConversion pattern="{(\d+)}" converted="$(1)"/>
+    <RegexConversion pattern="{}" converted=""/>
+    <RegexConversion pattern="(.*)" converted="$(1)"/>
+  </FormatTemplate>
 	<FormatTemplate name="standardAttributes" multiplicity="OneOrMore" seperator=" | ">
 		<Prefix value="StandardAttribute::"/>
 	</FormatTemplate>
