@@ -75,13 +75,13 @@
       </Arguments>
       <Description>Deploy 'PlmProject' with the custom library path 'lib/libPlmProject.so'</Description>
     </Example>
-    <!--<Example>
+    <Example>
       <Arguments>
         <Argument name="path" value="PlmProject"/>
         <Argument name="files" value="extern/libA.so|. extern/libB.so|."/>
       </Arguments>
       <Description>Deploy 'PlmProject' with the external libraries 'libA.so' and 'libB.so'. Automatic external library detection is disabled with that</Description>
-    </Example>-->
+    </Example>
     <Example>
       <Arguments>
         <Argument name="path" value="PlmProject"/>
