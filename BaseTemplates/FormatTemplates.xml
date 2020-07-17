@@ -105,7 +105,7 @@
     <Split>.</Split>
   </FormatTemplate>
   <FormatTemplate name="startUppercase">
-    <RegexConversion pattern="(?&lt;value&gt;.+)" converted="\u$(value)"/>
+    <RegexConversion pattern="(?&lt;value&gt;.+)" converted="$(u:value)"/>
   </FormatTemplate>
   <FormatTemplate name="convertStaticString">
     <RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="StaticString"/>

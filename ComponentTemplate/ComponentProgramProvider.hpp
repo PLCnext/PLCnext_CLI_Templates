@@ -14,7 +14,7 @@ class $(name)ProgramProvider : public ProgramProviderBase
 {
 
 public:   // construction/destruction
-    $(name)ProgramProvider($(name)& \l$(name)Arg);
+    $(name)ProgramProvider($(name)& $(l:name)Arg);
     virtual ~$(name)ProgramProvider() = default;
 
 public:   // IProgramProvider operations
@@ -25,14 +25,14 @@ private:   // deleted methods
     $(name)ProgramProvider& operator=(const $(name)ProgramProvider& arg) = delete;
 
 private: // fields
-    $(name)& \l$(name);
+    $(name)& $(l:name);
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 // inline methods of class $(name)ProgramProvider
 
-inline $(name)ProgramProvider::$(name)ProgramProvider($(name)& \l$(name)Arg)
-    : \l$(name)(\l$(name)Arg)
+inline $(name)ProgramProvider::$(name)ProgramProvider($(name)& $(l:name)Arg)
+    : $(l:name)($(l:name)Arg)
 {
 }
 
