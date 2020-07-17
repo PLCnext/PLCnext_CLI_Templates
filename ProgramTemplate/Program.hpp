@@ -17,7 +17,7 @@ class $(name) : public ProgramBase, private Loggable<$(name)>
 public: // typedefs
 
 public: // construction/destruction
-    $(name)($(component.fullName.format.cppFullName)& \l$(component.name)Arg, const String& name);
+    $(name)($(component.fullName.format.cppFullName)& $(l:component.name)Arg, const String& name);
     $(name)(const $(name)& arg) = delete;
     virtual ~$(name)() = default;
 
@@ -42,15 +42,15 @@ public: /* Ports
         */
 
 private: // fields
-    $(component.fullName.format.cppFullName)& \l$(component.name);
+    $(component.fullName.format.cppFullName)& $(l:component.name);
 
 };
 
 ///////////////////////////////////////////////////////////////////////////////
 // inline methods of class ProgramBase
-inline $(name)::$(name)($(component.fullName.format.cppFullName)& \l$(component.name)Arg, const String& name)
+inline $(name)::$(name)($(component.fullName.format.cppFullName)& $(l:component.name)Arg, const String& name)
 : ProgramBase(name)
-, \l$(component.name)(\l$(component.name)Arg)
+, $(l:component.name)($(l:component.name)Arg)
 {
 }
 

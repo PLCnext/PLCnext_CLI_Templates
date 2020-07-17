@@ -10,7 +10,7 @@ IProgram::Ptr $(name)ProgramProvider::CreateProgramInternal(const String& progra
 $([foreach]program[in]related[of-type]program)
     if (programType == "$(program.name)")
     { 
-        return std::make_shared<::$(program.fullName)>(this->\l$(name), programName);
+        return std::make_shared<::$(program.fullName)>(this->$(l:name), programName);
     }
 $([end-foreach])
 
