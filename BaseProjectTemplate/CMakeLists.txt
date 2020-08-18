@@ -32,6 +32,15 @@ list(INSERT CMAKE_MODULE_PATH 0 "${ARP_TOOLCHAIN_CMAKE_MODULE_PATH}")
 
 #######################################################################################
 
+################# set RPATH to ORIGIN for thrid party libraries #######################
+# Only by setting this is it possible to use libraries which are not already          #
+# installed in the default install locations on the target.                           #
+#######################################################################################
+
+set_target_properties($(name) PROPERTIES INSTALL_RPATH $ORIGIN)
+
+#######################################################################################
+
 ################# set link options ####################################################
 # WARNING: Without --no-undefined the linker will not check, whether all necessary    #
 #          libraries are linked. When a library which is necessary is not linked,     #

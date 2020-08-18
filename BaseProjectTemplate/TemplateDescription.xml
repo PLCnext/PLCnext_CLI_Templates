@@ -15,4 +15,5 @@
     </Argument>
   </Arguments>
   <File name="CMakeLists.txt" template="../BaseProjectTemplate/CMakeLists.txt"/>
+  <File name="ADD_DEPENDENT_LIBRARIES_HERE" template="../BaseProjectTemplate/ADD_DEPENDENT_LIBRARIES_HERE" path="external"/>
 </TemplateDescription>
