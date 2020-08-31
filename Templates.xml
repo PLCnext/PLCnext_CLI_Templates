@@ -12,4 +12,5 @@
 	<Include type="Template">BaseProjectTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">AcfComponentTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">BaseComponentTemplate/TemplateDescription.xml</Include>
+	<Include type="Template">ConsumableLibraryTemplate/TemplateDescription.xml</Include>
 </Templates>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateDescription name="consumablelibrary" isRoot="true" basedOn="baseproject" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
+                     xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier">
+  <Arguments>
+    <Argument name="namespace" help="The root namespace for the consumable library. It is used to resolve the initial class namespace." />
+  </Arguments>
+  <File name="plcnext.proj" template=".proj"/>
+  <File name="CMakeLists.txt" template="CMakeLists.txt"/>
+  <File name="Config.cmake.in" template="Config.cmake.in"/>
+  <File name="How_to_use.txt" template="How_to_use.txt"/>
+  <File name="ADD_PUBLIC_HEADERS_HERE" template="ADD_PUBLIC_HEADERS_HERE" path="include"/>
+  <File name="$(name)Class.cpp" template="Class.cpp" path="src"/>
+  <File name="$(name)Class.hpp" template="Class.hpp" key="class" path="include/$(name)"/>
+  <Description>Create a new consumable library. The consumable library is a template creates a library which can be used by other projects. For more information visit the Help Center in the PLCnext Community.</Description>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="LibraryName"/>
+    </Arguments>
+    <Description>creates a new consumable library in the directory 'LibraryName' with the namespace 'LibraryName'</Description>
+  </Example>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="LibraryName"/>
+      <Argument name="namespace" value="SomeNamespace"/>
+    </Arguments>
+    <Description>creates a new consumable library in the directory 'LibraryName' with the namespace 'SomeNamespace'</Description>
+  </Example>
+  <!--<DeployPostStep identifier="CopyDependenciesDeployStep"/>-->
+</TemplateDescription>
