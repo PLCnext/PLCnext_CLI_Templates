@@ -1,30 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FormatTemplates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
 	<FormatTemplate name="ctn">
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Bit" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?(?:Bool|Boolean)" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt8" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int8" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Char8" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Char16" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt16" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int16" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt32" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int32" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Float32" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Float64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?DateTime" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTime" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTime64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDate" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDate64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="&quot;&quot;"/>
-		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="&quot;&quot;"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Bit" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?(?:Bool|Boolean)" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt8" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int8" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Char8" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Char16" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt16" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int16" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt32" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int32" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?UInt64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Int64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Float32" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?Float64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?DateTime" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTime" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTime64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDate" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDate64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="String::Empty"/>
 		<TemplateConversion template="CTN&lt;$(fullName)&gt;()"/>
 	</FormatTemplate>
   <!--Implicitly used for arpDataType conversion which is programmed-->

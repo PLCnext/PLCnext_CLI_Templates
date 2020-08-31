@@ -33,7 +33,9 @@
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
 				   generator="code" aggregated="generated.hpp"
 				   key="library"/>
-	<GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp" 
+	<GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Optimized_Library.meta.cpp" condition="$(big-data-project)"
+				   generator="Code" aggregated="generated.cpp"/>
+	<GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp" condition="$(normal-project)"
 				   generator="Code" aggregated="generated.cpp"/>
 	<GeneratedFile name="$(namespace).libmeta" template="Library.libmeta"
 				   generator="Config" deployPath="."/>
