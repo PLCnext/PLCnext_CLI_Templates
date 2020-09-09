@@ -12,6 +12,7 @@
 	<GeneratedFile name="$(name).compmeta" template="Component.compmeta"
 				   generator="Config" path="$(name)" deployPath="$(name)"/>
   <Description>Create a new component inside the project.</Description>
+  <Relationship name="project" type="project"/>
   <Example>
     <Arguments>
       <Argument name="name" value="NewComponent"/>
