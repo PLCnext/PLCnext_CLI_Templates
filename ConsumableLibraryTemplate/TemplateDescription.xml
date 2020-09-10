@@ -11,7 +11,7 @@
   <File name="ADD_PUBLIC_HEADERS_HERE.txt" template="ADD_PUBLIC_HEADERS_HERE" path="include"/>
   <File name="$(name)Class.cpp" template="Class.cpp" path="src"/>
   <File name="$(name)Class.hpp" template="Class.hpp" key="class" path="include/$(name)"/>
-  <Description>Create a new consumable library. The consumable library is a template creates a library which can be used by other projects. For more information visit the Help Center in the PLCnext Community.</Description>
+  <Description>Create a new consumable library. The consumable library is a template, that creates a library which can be used by other projects. For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>
       <Argument name="name" value="LibraryName"/>
