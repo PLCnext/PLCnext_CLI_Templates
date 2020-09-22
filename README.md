@@ -1,6 +1,6 @@
 # Welcome to the PLCnCLI template repository
 
-This repository is part of the PLCnext CLI (PLCnext Command Line Interface) which provides the entire toolchain for C++ programming on the PLCnext Technology platform. Part of the CLI is a template for creating projects. In this Repository you find all the available templates and information how to write your own templates.
+This repository is part of the PLCnext CLI (PLCnext Command Line Interface) which provides the entire toolchain for C++ programming on the PLCnext Technology platform. Part of the CLI is a template for creating projects. In this Repository you find all the available templates and information how to write your own templates. The main repository for the CLI can be found [here](https://github.com/PLCnext/PLCnext_CLI).
 
 ## Installation & First Steps
 
