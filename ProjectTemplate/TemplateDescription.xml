@@ -41,6 +41,8 @@
 				   generator="Config" deployPath="."/>
 	<GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
 				   generator="Config" deployPath="."/>
+	<GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate)"
+				   generator="Config" deployPath="."/>
   <Description>Create a new project. The project is a template for user programs. They are managed by the PLM (Program Library Manager). For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>
@@ -100,4 +102,9 @@
       <Description>Deploy 'PlmProject' into folder 'out' where binaries were built into standard folder 'bin/AXCF2152_19.6.0.21013/Release'</Description>
     </Example>
   </DeployPostStep>
+  <GenerateStep generator="config">
+	<Arguments>
+	  <Argument name="no-datatypes-worksheet" short-name="d" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
+	</Arguments>
+  </GenerateStep>
 </TemplateDescription>

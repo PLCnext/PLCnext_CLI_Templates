@@ -55,6 +55,35 @@
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
     <RegexConversion pattern="(.*)" converted="unkown($(1))"/>
   </FormatTemplate>
+	<FormatTemplate name="iecDataType">
+		<RegexConversion ignore-case="true" pattern="Boolean" converted="BOOL"/>
+		<RegexConversion ignore-case="true" pattern="UInt8" converted="USINT"/>
+		<RegexConversion ignore-case="true" pattern="Int8" converted="SINT"/>
+		<RegexConversion ignore-case="true" pattern="UInt16" converted="UINT"/>
+		<RegexConversion ignore-case="true" pattern="Int16" converted="INT"/>
+		<RegexConversion ignore-case="true" pattern="UInt32" converted="UDINT"/>
+		<RegexConversion ignore-case="true" pattern="Int32" converted="DINT"/>
+		<RegexConversion ignore-case="true" pattern="UInt64" converted="ULINT"/>
+		<RegexConversion ignore-case="true" pattern="Int64" converted="LINT"/>
+		<RegexConversion ignore-case="true" pattern="Float32" converted="REAL"/>
+		<RegexConversion ignore-case="true" pattern="Float64" converted="LREAL"/>
+		<RegexConversion ignore-case="true" pattern="StaticString" converted="STRING"/>
+		<RegexConversion ignore-case="true" pattern="Char8" converted="CHAR"/>
+		<RegexConversion ignore-case="true" pattern="Char16" converted="WCHAR"/>
+		<RegexConversion ignore-case="true" pattern="IecTime" converted="TIME"/>
+		<RegexConversion ignore-case="true" pattern="IecTime64" converted="LTIME"/>
+		<RegexConversion ignore-case="true" pattern="IecDate64" converted="LDATE"/>
+		<RegexConversion ignore-case="true" pattern="IecDateTime64" converted="LDATE_AND_TIME"/>
+		<RegexConversion ignore-case="true" pattern="IecTimeOfDay64" converted="LTIME_OF_DAY"/>
+		<RegexConversion ignore-case="true" pattern="Bit" converted="BOOL"/>
+		<RegexConversion pattern="(.*)" converted="unknown($(1))"/>
+		<!--
+		<RegexConversion ignore-case="true" pattern="DateTime" converted=""/>
+		<RegexConversion ignore-case="true" pattern="IecDate" converted=""/>
+		<RegexConversion ignore-case="true" pattern="IecDateTime" converted=""/>
+		<RegexConversion ignore-case="true" pattern="IecTimeOfDay" converted=""/>
+		-->
+	</FormatTemplate>
 	<FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
 	<FormatTemplate name="metaDimensions">
     <TemplateConversion template="$(value.format.metaDimensionsSplitter.format.removeBracesFromSingle)"/>
@@ -128,5 +157,18 @@
   </FormatTemplate>
   <FormatTemplate name="escapeAmp" multiplicity="OneOrMore" seperator="&amp;amp;">
     <Split>&amp;</Split>
+  </FormatTemplate>
+  <FormatTemplate name="listNamesAndValues" multiplicity="OneOrMore" seperator=", ">
+	<TemplateConversion template="$(name)$([if-specified]value) := $(value)$([end-if-specified])"/>
+  </FormatTemplate>
+  <FormatTemplate name="checkForArray">
+    <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
+  </FormatTemplate>
+  <FormatTemplate name="checkUsedInStruct">
+	  <ConditionalConversion condition="$(usedInStruct)" template="Array"/>
+	  <RegexConversion pattern=".*" converted=""/>
+  </FormatTemplate>
+  <FormatTemplate name="listMultiplicity" multiplicity="OneOrMore" seperator=", ">
+	  <TemplateConversion template="0..$(decrement)"/>
   </FormatTemplate>
 </FormatTemplates>

@@ -1,0 +1,18 @@
+﻿TYPE
+$([foreach]struct[in]portStructs)
+    $(struct.name) : STRUCT
+$([foreach]field[in]struct.fields)
+        $(field.name) : $(field.format.iecDataTypeFormat.format.checkForArray);
+$([end-foreach])
+    END_STRUCT
+
+$([end-foreach])
+$([foreach]enum[in]portEnums)
+    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $(enum.baseType.format.iecDataTypeFormat);
+
+$([end-foreach])
+$([foreach]array[in]portArrays)
+    $(array.name)$(array.format.checkUsedInStruct) : ARRAY [$(array.Multiplicity.format.listMultiplicity)] OF $(array.format.iecDataTypeFormat);
+
+$([end-foreach])
+END_TYPE
