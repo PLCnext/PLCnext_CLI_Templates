@@ -68,8 +68,6 @@
 		<RegexConversion ignore-case="true" pattern="Float32" converted="REAL"/>
 		<RegexConversion ignore-case="true" pattern="Float64" converted="LREAL"/>
 		<RegexConversion ignore-case="true" pattern="StaticString" converted="STRING"/>
-		<RegexConversion ignore-case="true" pattern="Char8" converted="CHAR"/>
-		<RegexConversion ignore-case="true" pattern="Char16" converted="WCHAR"/>
 		<RegexConversion ignore-case="true" pattern="IecTime" converted="TIME"/>
 		<RegexConversion ignore-case="true" pattern="IecTime64" converted="LTIME"/>
 		<RegexConversion ignore-case="true" pattern="IecDate64" converted="LDATE"/>
@@ -163,10 +161,6 @@
   </FormatTemplate>
   <FormatTemplate name="checkForArray">
     <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
-  </FormatTemplate>
-  <FormatTemplate name="checkUsedInStruct">
-	  <ConditionalConversion condition="$(usedInStruct)" template="Array"/>
-	  <RegexConversion pattern=".*" converted=""/>
   </FormatTemplate>
   <FormatTemplate name="listMultiplicity" multiplicity="OneOrMore" seperator=", ">
 	  <TemplateConversion template="0..$(decrement)"/>

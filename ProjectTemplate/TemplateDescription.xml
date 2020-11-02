@@ -104,7 +104,7 @@
   </DeployPostStep>
   <GenerateStep generator="config">
 	<Arguments>
-	  <Argument name="no-datatypes-worksheet" short-name="d" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
+	  <Argument name="no-datatypes-worksheet" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
 	</Arguments>
   </GenerateStep>
 </TemplateDescription>

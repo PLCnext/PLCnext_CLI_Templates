@@ -12,7 +12,7 @@ $([foreach]enum[in]portEnums)
 
 $([end-foreach])
 $([foreach]array[in]portArrays)
-    $(array.name)$(array.format.checkUsedInStruct) : ARRAY [$(array.Multiplicity.format.listMultiplicity)] OF $(array.format.iecDataTypeFormat);
+    $(array.name)Array : ARRAY [$(array.Multiplicity.throwIfMultidimensional.format.listMultiplicity)] OF $(array.format.iecDataTypeFormat);
 
 $([end-foreach])
 END_TYPE
