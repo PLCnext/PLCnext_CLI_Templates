@@ -8,12 +8,9 @@ endif()
 
 ################# create target #######################################################
 
-set (WILDCARD_SOURCE *.cpp)
-set (WILDCARD_HEADER *.h *.hpp *.hxx)
-
-file(GLOB_RECURSE Headers CONFIGURE_DEPENDS src/${WILDCARD_HEADER})
-file(GLOB_RECURSE PublicHeaders CONFIGURE_DEPENDS include/${WILDCARD_HEADER})
-file(GLOB_RECURSE Sources CONFIGURE_DEPENDS src/${WILDCARD_SOURCE})
+file(GLOB_RECURSE Headers CONFIGURE_DEPENDS src/*.h src/*.hpp src/*.hxx)
+file(GLOB_RECURSE PublicHeaders CONFIGURE_DEPENDS include/*.h include/*.hpp include/*.hxx)
+file(GLOB_RECURSE Sources CONFIGURE_DEPENDS src/*.cpp)
 add_library($(name) SHARED ${Headers} ${PublicHeaders} ${Sources})
 
 #######################################################################################
