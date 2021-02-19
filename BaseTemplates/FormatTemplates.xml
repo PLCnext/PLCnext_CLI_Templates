@@ -25,6 +25,7 @@
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="String::Empty"/>
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="String::Empty"/>
 		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="String::Empty"/>
+		<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString(.*)" converted="String::Empty"/>
 		<TemplateConversion template="CTN&lt;$(fullName)&gt;()"/>
 	</FormatTemplate>
   <!--Implicitly used for arpDataType conversion which is programmed-->
@@ -52,7 +53,8 @@
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="IecDateTime64"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="IecTimeOfDay"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="IecTimeOfDay64"/>
-    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
+	  <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
+	  <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString(.*)" converted="StaticWString"/>
     <RegexConversion pattern="(.*)" converted="unkown($(1))"/>
   </FormatTemplate>
 	<FormatTemplate name="iecDataType">
@@ -68,6 +70,7 @@
 		<RegexConversion ignore-case="true" pattern="Float32" converted="REAL"/>
 		<RegexConversion ignore-case="true" pattern="Float64" converted="LREAL"/>
 		<RegexConversion ignore-case="true" pattern="StaticString" converted="STRING"/>
+		<RegexConversion ignore-case="true" pattern="StaticWString" converted="WSTRING"/>
 		<RegexConversion ignore-case="true" pattern="IecTime" converted="TIME"/>
 		<RegexConversion ignore-case="true" pattern="IecTime64" converted="LTIME"/>
 		<RegexConversion ignore-case="true" pattern="IecDate64" converted="LDATE"/>
@@ -137,6 +140,8 @@
   <FormatTemplate name="convertStaticString">
     <RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="StaticString"/>
     <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticString$(1)"/>
+	<RegexConversion ignore-case="true" pattern="StaticWString&lt;80&gt;" converted="StaticWString"/>
+    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticWString$(1)"/>
   </FormatTemplate>
   <FormatTemplate name="escapeXmlNames">
     <TemplateConversion template="$(value.format.escapeAmp.format.escapeLt.format.escapeGt.format.escapeQuote.format.escapeApos)"/>
