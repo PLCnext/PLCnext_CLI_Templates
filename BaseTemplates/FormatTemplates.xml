@@ -53,77 +53,83 @@
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecDateTime64" converted="IecDateTime64"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay" converted="IecTimeOfDay"/>
     <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?IecTimeOfDay64" converted="IecTimeOfDay64"/>
-	  <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
-	  <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString(.*)" converted="StaticWString"/>
+	<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(.*)" converted="StaticString"/>
+	<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString(.*)" converted="StaticWString"/>
     <RegexConversion pattern="(.*)" converted="unkown($(1))"/>
   </FormatTemplate>
-	<FormatTemplate name="iecDataType">
-		<RegexConversion ignore-case="true" pattern="Boolean" converted="BOOL"/>
-		<RegexConversion ignore-case="true" pattern="UInt8" converted="USINT"/>
-		<RegexConversion ignore-case="true" pattern="Int8" converted="SINT"/>
-		<RegexConversion ignore-case="true" pattern="UInt16" converted="UINT"/>
-		<RegexConversion ignore-case="true" pattern="Int16" converted="INT"/>
-		<RegexConversion ignore-case="true" pattern="UInt32" converted="UDINT"/>
-		<RegexConversion ignore-case="true" pattern="Int32" converted="DINT"/>
-		<RegexConversion ignore-case="true" pattern="UInt64" converted="ULINT"/>
-		<RegexConversion ignore-case="true" pattern="Int64" converted="LINT"/>
-		<RegexConversion ignore-case="true" pattern="Float32" converted="REAL"/>
-		<RegexConversion ignore-case="true" pattern="Float64" converted="LREAL"/>
-		<RegexConversion ignore-case="true" pattern="StaticString" converted="STRING"/>
-		<RegexConversion ignore-case="true" pattern="StaticWString" converted="WSTRING"/>
-		<RegexConversion ignore-case="true" pattern="IecTime" converted="TIME"/>
-		<RegexConversion ignore-case="true" pattern="IecTime64" converted="LTIME"/>
-		<RegexConversion ignore-case="true" pattern="IecDate64" converted="LDATE"/>
-		<RegexConversion ignore-case="true" pattern="IecDateTime64" converted="LDATE_AND_TIME"/>
-		<RegexConversion ignore-case="true" pattern="IecTimeOfDay64" converted="LTIME_OF_DAY"/>
-		<RegexConversion ignore-case="true" pattern="Bit" converted="BOOL"/>
-		<RegexConversion pattern="(.*)" converted="unknown($(1))"/>
-		<!--
-		<RegexConversion ignore-case="true" pattern="DateTime" converted=""/>
-		<RegexConversion ignore-case="true" pattern="IecDate" converted=""/>
-		<RegexConversion ignore-case="true" pattern="IecDateTime" converted=""/>
-		<RegexConversion ignore-case="true" pattern="IecTimeOfDay" converted=""/>
-		-->
-	</FormatTemplate>
-	<FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
-	<FormatTemplate name="metaDimensions">
+  <FormatTemplate name="iecDataType">
+	<RegexConversion ignore-case="true" pattern="Boolean" converted="BOOL"/>
+	<RegexConversion ignore-case="true" pattern="UInt8" converted="USINT"/>
+	<RegexConversion ignore-case="true" pattern="Int8" converted="SINT"/>
+	<RegexConversion ignore-case="true" pattern="UInt16" converted="UINT"/>
+	<RegexConversion ignore-case="true" pattern="Int16" converted="INT"/>
+	<RegexConversion ignore-case="true" pattern="UInt32" converted="UDINT"/>
+	<RegexConversion ignore-case="true" pattern="Int32" converted="DINT"/>
+	<RegexConversion ignore-case="true" pattern="UInt64" converted="ULINT"/>
+	<RegexConversion ignore-case="true" pattern="Int64" converted="LINT"/>
+	<RegexConversion ignore-case="true" pattern="Float32" converted="REAL"/>
+	<RegexConversion ignore-case="true" pattern="Float64" converted="LREAL"/>
+	<RegexConversion ignore-case="true" pattern="StaticString" converted="STRING"/>
+	<RegexConversion ignore-case="true" pattern="StaticWString" converted="WSTRING"/>
+	<RegexConversion ignore-case="true" pattern="IecTime" converted="TIME"/>
+	<RegexConversion ignore-case="true" pattern="IecTime64" converted="LTIME"/>
+	<RegexConversion ignore-case="true" pattern="IecDate64" converted="LDATE"/>
+	<RegexConversion ignore-case="true" pattern="IecDateTime64" converted="LDATE_AND_TIME"/>
+	<RegexConversion ignore-case="true" pattern="IecTimeOfDay64" converted="LTIME_OF_DAY"/>
+	<RegexConversion ignore-case="true" pattern="Bit" converted="BOOL"/>
+	<RegexConversion pattern="(.*)" converted="unknown($(1))"/>
+	<!--
+	<RegexConversion ignore-case="true" pattern="DateTime" converted=""/>
+	<RegexConversion ignore-case="true" pattern="IecDate" converted=""/>
+	<RegexConversion ignore-case="true" pattern="IecDateTime" converted=""/>
+	<RegexConversion ignore-case="true" pattern="IecTimeOfDay" converted=""/>
+	-->
+  </FormatTemplate>
+  <FormatTemplate name="iecStringDataType">
+	<RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="STRING"/>
+    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="STRING[$(1)]"/>
+    <RegexConversion ignore-case="true" pattern="StaticWString&lt;80&gt;" converted="WSTRING"/>
+    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="WSTRING[$(1)]"/>
+  </FormatTemplate>
+  <FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
+  <FormatTemplate name="metaDimensions">
     <TemplateConversion template="$(value.format.metaDimensionsSplitter.format.removeBracesFromSingle)"/>
-	</FormatTemplate>
-	<FormatTemplate name="metaDimensionsSplitter" multiplicity="OneOrMore" seperator=",">
+  </FormatTemplate>
+  <FormatTemplate name="metaDimensionsSplitter" multiplicity="OneOrMore" seperator=",">
     <Split>,</Split>
-		<Prefix value="{"/>
-		<Suffix value="}"/>
-	</FormatTemplate>
+	<Prefix value="{"/>
+	<Suffix value="}"/>
+  </FormatTemplate>
   <FormatTemplate name="removeBracesFromSingle">
     <RegexConversion pattern="{(\d+)}" converted="$(1)"/>
     <RegexConversion pattern="{}" converted=""/>
     <RegexConversion pattern="(.*)" converted="$(1)"/>
   </FormatTemplate>
-	<FormatTemplate name="standardAttributes" multiplicity="OneOrMore" seperator=" | ">
-		<Prefix value="StandardAttribute::"/>
-	</FormatTemplate>
+  <FormatTemplate name="standardAttributes" multiplicity="OneOrMore" seperator=" | ">
+	<Prefix value="StandardAttribute::"/>
+  </FormatTemplate>
   <FormatTemplate name="metaAttributes" multiplicity="OneOrMore" seperator="|">
     <RegexConversion ignore-case="true" pattern="None" converted=""/>
   </FormatTemplate>
   <FormatTemplate name="start" target="namespace" multiplicity="OneOrMore" seperator=" { ">
-	  <Prefix value="namespace "/>
-		<Suffix only-aggregated="true" value="$(newLine){"/>
-	  <Split>::</Split>
-	  <Split>.</Split>
-	</FormatTemplate>
-	<FormatTemplate name="end" target="namespace" multiplicity="OneOrMore">
+	<Prefix value="namespace "/>
+	<Suffix only-aggregated="true" value="$(newLine){"/>
+	<Split>::</Split>
+	<Split>.</Split>
+  </FormatTemplate>
+  <FormatTemplate name="end" target="namespace" multiplicity="OneOrMore">
     <RegexConversion converted="}"/>
-	  <Split>::</Split>
-	  <Split>.</Split>
+	<Split>::</Split>
+	<Split>.</Split>
 	</FormatTemplate>
-	<FormatTemplate name="directoryName">
-		<RegexConversion pattern="^.*?[\/\\](?&lt;directoryName&gt;[^\/\\]*)[\/\\]?\s*$" converted="$(directoryName)"/>
-	</FormatTemplate>
-	<FormatTemplate name="srcBasePath" target="output">
-	  <ConditionalConversion condition="$(isRooted)" template="$(value)"/>
-	  <RegexConversion pattern="(.*[\/\\]?(?&lt;=[\/\\]|^)src(?=[\/\\]|$)[\/\\]?.*)" converted="$(1)"/>
-	  <TemplateConversion pattern="(?!.*[\/\\]src(?=[\/\\]|$)).*" template="./src/$(value)"/>
-	</FormatTemplate>
+  <FormatTemplate name="directoryName">
+	<RegexConversion pattern="^.*?[\/\\](?&lt;directoryName&gt;[^\/\\]*)[\/\\]?\s*$" converted="$(directoryName)"/>
+  </FormatTemplate>
+  <FormatTemplate name="srcBasePath" target="output">
+	<ConditionalConversion condition="$(isRooted)" template="$(value)"/>
+	<RegexConversion pattern="(.*[\/\\]?(?&lt;=[\/\\]|^)src(?=[\/\\]|$)[\/\\]?.*)" converted="$(1)"/>
+	<TemplateConversion pattern="(?!.*[\/\\]src(?=[\/\\]|$)).*" template="./src/$(value)"/>
+  </FormatTemplate>
   <FormatTemplate name="relativePath" target="path" multiplicity="OneOrMore" seperator="">
     <Split>$([if-specified]base-directory)$(base-directory)$([else])$(root.path)$([end-if-specified])</Split>
     <RegexConversion pattern="[\/\\](?&lt;split&gt;.*)?" converted="$(split)"/>
@@ -136,6 +142,10 @@
   </FormatTemplate>
   <FormatTemplate name="startUppercase">
     <RegexConversion pattern="(?&lt;value&gt;.+)" converted="$(u:value)"/>
+  </FormatTemplate>
+  <FormatTemplate name="convertIecString">
+    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="String$(1)"/>
+    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="WString$(1)"/>
   </FormatTemplate>
   <FormatTemplate name="convertStaticString">
     <RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="StaticString"/>
