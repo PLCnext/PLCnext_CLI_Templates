@@ -1,6 +1,18 @@
 ﻿+ Copy everything from the target output folder to the target to /opt/plcnext/projects/<UniqueFolderName>
 	+ The UniqueFolderName can be anything, it is needed in the next step
-+ Edit the file /opt/plcnext/projects/Default/Default.acf.config in the following way:
-	+ Under includes add a new entry in the format:
-	  <Include path="$ARP_PROJECTS_DIR$/<UniqueFolderName>/*.acf.config" />
++ Add a new file /opt/plcnext/projects/Default/<UniqueFolderName>.acf.config with the following content:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<AcfConfigurationDocument 
+  xmlns="http://www.phoenixcontact.com/schema/acfconfig"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.phoenixcontact.com/schema/acfconfig" 
+  schemaVersion="1.0" >
+
+  <Includes>
+    <Include path="$ARP_PROJECTS_DIR$/<UniqueFolderName>/*.acf.config" />
+  </Includes>
+ 
+</AcfConfigurationDocument>
+
 + Restart the device
