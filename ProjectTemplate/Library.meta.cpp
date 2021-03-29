@@ -22,7 +22,7 @@ using namespace Arp::Plc::Commons::Meta;
             {
 $([foreach]struct[in]portStructs)
                 {   // TypeDefinition: $(struct.fullName)
-                    DataType::Struct, $(struct.format.ctn), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
+                    DataType::Struct, CTN<$(struct.fullName)>(), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
@@ -33,7 +33,7 @@ $([end-foreach])
 $([end-foreach])
 $([foreach]program[in]hierarchy[of-type]program)
                 {   // ProgramDefinition: $(program.fullName)
-                    DataType::Program, $(program.format.ctn), sizeof(::$(program.fullName)), alignof(::$(program.fullName)), StandardAttribute::None,
+                    DataType::Program, CTN<$(program.fullName)>(), sizeof(::$(program.fullName)), alignof(::$(program.fullName)), StandardAttribute::None,
                     {
                         // FieldDefinitions:
 $([foreach]port[in]program.ports)
