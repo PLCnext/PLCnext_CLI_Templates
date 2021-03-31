@@ -3,6 +3,8 @@
   <Relationship name="project" type="acfproject"/>
   <File name="$(name).cpp" template="Component.cpp" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
   <File name="$(name).hpp" template="Component.hpp" key="component" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
+  <GeneratedFile name="$(name).compmeta" template="Component.compmeta" 
+				 generator="Config" path="$(name)" deployPath="$(name)"/>
   <Description>Create a new acfcomponent inside the acfproject.</Description>
   <Example>
     <Arguments>

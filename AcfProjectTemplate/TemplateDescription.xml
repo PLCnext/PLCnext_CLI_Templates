@@ -19,15 +19,21 @@
   <File name="How_to_deploy.txt" template="How_to_deploy.txt" deployPath="."/>
   <File name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" deployPath="." template="acf.config" path="src"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
-				   generator="code" aggregated="generated.cpp"/>
+				 generator="code" aggregated="generated.cpp" minversion="1.2" />
+  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="old_Library.cpp"
+	   			 generator="code" aggregated="generated.cpp" maxversion=" 1.1"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
-				   generator="code" aggregated="generated.hpp"
-				   key="library"/>
+				 generator="code" aggregated="generated.hpp"
+				 key="library"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Library.meta.cpp" condition="$(normal-project)"
-				   generator="code" aggregated="generated.cpp"/>
-	<GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Optimized_Library.meta.cpp" condition="$(big-data-project)"
-				   generator="code" aggregated="generated.cpp"/>
-	<Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). For more information visit the Help Center in the PLCnext Community.</Description>
+				 generator="code" aggregated="generated.cpp"/>
+  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Optimized_Library.meta.cpp" condition="$(big-data-project)"
+				 generator="code" aggregated="generated.cpp"/>
+  <GeneratedFile name="$(namespace).libmeta" template="Library.libmeta"
+				 generator="Config" deployPath="."/>
+  <GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
+        		 generator="Config" deployPath="."/>
+  <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>
       <Argument name="name" value="ProjectName"/>
@@ -42,4 +48,10 @@
     </Arguments>
     <Description>creates a new acfproject in the directory 'ProjectName' with the component 'SomeComponent' in the namespace 'SomeNamespace'</Description>
   </Example>
+  <GenerateStep generator="code" identifier="AcfGenerateStep" />
+  <DeployPostStep identifier="AcfLibraryBuilderDeployStep">
+    <Arguments>
+      <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
+    </Arguments>
+  </DeployPostStep>
 </TemplateDescription>
