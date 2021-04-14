@@ -8,7 +8,7 @@ $([end-foreach])
 
 $([end-foreach])
 $([foreach]enum[in]portEnums)
-    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $(enum.baseType.format.iecDataTypeFormat);
+    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $(enum.format.iecDataTypeFormat);
 
 $([end-foreach])
 $([foreach]array[in]portArrays)

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FormatTemplates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+  <FormatTemplate name="AllowedcpptoIECDataTypeConversions">
+    <RegexConversion pattern="Boolean" converted="BOOL"/>
+	<RegexConversion pattern="Int8" converted="SINT"/>
+	<RegexConversion pattern="UInt8" converted="USINT"/>
+	<RegexConversion pattern="UInt8" converted="BYTE"/>
+	<RegexConversion pattern="Int16" converted="INT"/>
+	<RegexConversion pattern="UInt16" converted="UINT"/>
+	<RegexConversion pattern="UInt16" converted="WORD"/>
+	<RegexConversion pattern="Int32" converted="DINT"/>
+	<RegexConversion pattern="UInt32" converted="UDINT"/>
+	<RegexConversion pattern="UInt32" converted="DWORD"/>
+	<RegexConversion pattern="Int64" converted="LINT"/>
+	<RegexConversion pattern="UInt64" converted="ULINT"/>
+	<RegexConversion pattern="UInt64" converted="LWORD"/>
+	<RegexConversion pattern="Float32" converted="REAL"/>
+	<RegexConversion pattern="Float64" converted="LREAL"/>
+	<RegexConversion pattern="StaticString" converted="STRING"/>
+	<RegexConversion pattern="StaticWString" converted="WSTRING"/>
+	<RegexConversion pattern="IecTime" converted="TIME"/>
+	<RegexConversion pattern="IecTime64" converted="LTIME"/>
+	<RegexConversion pattern="IecDate64" converted="LDATE"/>
+	<RegexConversion pattern="IecDateTime64" converted="LDATE_AND_TIME"/>
+	<RegexConversion pattern="IecTimeOfDay64" converted="LTIME_OF_DAY"/>
+	<RegexConversion pattern="Bit" converted="BOOL"/>
+  </FormatTemplate>
+</FormatTemplates>

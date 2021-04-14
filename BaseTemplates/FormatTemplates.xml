@@ -86,10 +86,10 @@
 	-->
   </FormatTemplate>
   <FormatTemplate name="iecStringDataType">
-	<RegexConversion ignore-case="true" pattern="StaticString&lt;80&gt;" converted="STRING"/>
-    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="STRING[$(1)]"/>
-    <RegexConversion ignore-case="true" pattern="StaticWString&lt;80&gt;" converted="WSTRING"/>
-    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="WSTRING[$(1)]"/>
+	<RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString&lt;(80)?&gt;" converted="STRING"/>
+    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="STRING[$(1)]"/>
+    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString&lt;(80)?&gt;" converted="WSTRING"/>
+    <RegexConversion ignore-case="true" pattern="(?:(?:::)?Arp\S*::)?StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="WSTRING[$(1)]"/>
   </FormatTemplate>
   <FormatTemplate name="dimensions" multiplicity="OneOrMore" seperator=";"/>
   <FormatTemplate name="metaDimensions">

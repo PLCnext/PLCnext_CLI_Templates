@@ -2,6 +2,7 @@
 <Templates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
 	<Include type="Template">ProjectTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">ProgramTemplate/TemplateDescription.xml</Include>
+	<Include type="Format">ProjectTemplate/FormatTemplates.xml</Include>
 	<Include type="Template">ComponentTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">BaseTemplates/BaseTemplateDescription.xml</Include>
 	<Include type="Template">BaseTemplates/CodeTemplateDescription.xml</Include>
