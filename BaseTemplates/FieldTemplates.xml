@@ -20,4 +20,5 @@
 		  <Enumeration>Hidden</Enumeration>
 		</ValueRestriction>
 	</FieldTemplate>
+	<FieldTemplate name="typeinformation"/>
 </FieldTemplates>

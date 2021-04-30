@@ -1,7 +1,7 @@
 ﻿#include "Arp/System/Core/Arp.h"
 #include "Arp/Plc/Commons/Meta/TypeSystem/TypeSystem.h"
 $([no-duplicate-lines])
-$([foreach]struct[in]portStructs)
+$([foreach]struct[in]portAndTypeDefinitionStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
 #include "$(template.files.library.format.include)"
@@ -17,7 +17,7 @@ using namespace Arp::Plc::Commons::Meta;
         (
             // Begin TypeDefinitions
             {
-$([foreach]struct[in]portStructs)
+$([foreach]struct[in]portAndTypeDefinitionStructs)
                 {   // TypeDefinition: $(struct.fullName)
                     DataType::Struct, CTN<$(struct.fullName)>(), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
                     {
