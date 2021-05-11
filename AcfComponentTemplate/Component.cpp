@@ -15,7 +15,7 @@ $(name)::$(name)(IApplication& application, const String& name)
 void $(name)::Initialize()
 {
     // never remove next line
-    PlcDomainProxy::GetInstance().RegisterComponent(*this, false);
+    PlcDomainProxy::GetInstance().RegisterComponent(*this, true);
     
     // subscribe events from the event system (Nm) here
 }
