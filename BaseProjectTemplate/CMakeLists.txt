@@ -29,7 +29,7 @@ list(INSERT CMAKE_MODULE_PATH 0 "${ARP_TOOLCHAIN_CMAKE_MODULE_PATH}")
 
 #######################################################################################
 
-################# set RPATH to ORIGIN for thrid party libraries #######################
+################# set RPATH to ORIGIN for third party libraries #######################
 # Only by setting this is it possible to use libraries which are not already          #
 # installed in the default install locations on the target.                           #
 #######################################################################################
