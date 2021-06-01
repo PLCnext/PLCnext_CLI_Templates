@@ -5,6 +5,9 @@
   <File name="$(name).hpp" template="Component.hpp" key="component" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
   <GeneratedFile name="$(name).compmeta" template="Component.compmeta" 
 				 generator="Config" path="$(name)" deployPath="$(name)"/>
+  <GeneratedFile name="$(name).meta.cpp" template="../BaseComponentTemplate/Component.meta.cpp"
+                 generator="Code" path="$(template.files.component.path.format.relativePath)"
+                 aggregated="generated.cpp"/>
   <Description>Create a new acfcomponent inside the acfproject.</Description>
   <Example>
     <Arguments>

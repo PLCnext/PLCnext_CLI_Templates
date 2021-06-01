@@ -8,7 +8,7 @@ $(namespace.format.start)
 using namespace Arp;
 using namespace Arp::System::Acf;
 
-//$(settings.AttributePrefix)acfcomponent
+//$(settings.AttributePrefix)minimumcomponent
 class $(name) : public ComponentBase
 {
 public: // typedefs
