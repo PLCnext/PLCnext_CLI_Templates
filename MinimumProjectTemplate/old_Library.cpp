@@ -10,7 +10,7 @@ $(name.format.lastNamespacePart.format.escapeProjectName)Library::$(name.format.
     : LibraryBase(appDomain, ARP_VERSION_CURRENT)
 {
 $([foreach]component[in]related[of-type]basecomponent)
-    this->componentFactory.AddFactoryMethod(CommonTypeName<::$(component.fullName)>(), &::$(component.fullName)::Create);
+    this->componentFactory.AddFactoryMethod(TypeName<::$(component.fullName)>(), &::$(component.fullName)::Create);
 $([end-foreach])
 }
 
