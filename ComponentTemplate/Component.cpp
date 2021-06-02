@@ -40,4 +40,10 @@ void $(name)::ResetConfig()
     // implement this inverse to SetupConfig() and LoadConfig()
 }
 
+void $(name)::PowerDown()
+{
+    // implement this only if data must be retained even on power down event
+    // Available with 2021.6 FW
+}
+
 $(namespace.format.end) // end of namespace $(namespace)

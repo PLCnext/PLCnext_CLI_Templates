@@ -28,6 +28,7 @@ public: // IComponent operations
     void LoadConfig() override;
     void SetupConfig() override;
     void ResetConfig() override;
+    void PowerDown() override;
 
 public: // ProgramComponentBase operations
     void RegisterComponentPorts() override;
