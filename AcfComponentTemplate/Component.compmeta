@@ -3,7 +3,7 @@
   <Component type="$(name)">
     <Ports>
 $([foreach]port[in]ports.expandHiddenTypes)
-      <Port name="$(port.name.format.escapeXmlNames)" type="$(port.format.typeMetaDataFormat.format.convertStaticString)" attributes="$(port.attributes.format.metaAttributes)" dimensions="$(port.multiplicity.format.dimensions)" />
+      <Port name="$(port.name.format.escapeXmlNames)" type="$(port.format.typeMetaDataFormat.format.stringMacroReplace.format.convertStaticString)" attributes="$(port.attributes.format.metaAttributes)" dimensions="$(port.multiplicity.format.dimensions)" />
 $([end-foreach])
     </Ports>
   </Component>

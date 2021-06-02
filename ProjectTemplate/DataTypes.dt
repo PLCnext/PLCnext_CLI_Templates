@@ -16,7 +16,7 @@ $([foreach]array[in]portArrays)
 
 $([end-foreach])
 $([foreach]field[in]variablePortStrings)
-    $(field.name)$(field.datatype.format.convertIecString) : $(field.format.iecDataTypeFormat);
+    $(field.name)$(field.datatype.format.stringMacroReplace.format.convertIecString) : $(field.format.iecDataTypeFormat);
     
 $([end-foreach])
 END_TYPE
