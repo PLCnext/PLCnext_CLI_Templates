@@ -1,7 +1,7 @@
 ﻿#include "Arp/System/Core/Arp.h"
 #include "Arp/Plc/Commons/Meta/TypeSystem/TypeSystem.h"
 $([no-duplicate-lines])
-$([foreach]struct[in]portAndTypeDefinitionStructs)
+$([foreach]struct[in]portAndTypeInformationStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
 #include "$(template.files.library.format.include)"
@@ -12,7 +12,7 @@ $(namespace.format.start)
 using namespace Arp::Plc::Commons::Meta;
     
 namespace { // anonymous namespace
-$([foreach]struct[in]portAndTypeDefinitionStructs)
+$([foreach]struct[in]portAndTypeInformationStructs)
 $([foreach]chunk[in]struct.fields[split]8)
     void AddFieldDefinitions_$(struct.name)_$(chunk.start)_$(chunk.end)(TypeDefinition& typeDefinition)
     {
@@ -44,7 +44,7 @@ $(namespace.format.start)
 
     void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain()
     {
-$([foreach]struct[in]portAndTypeDefinitionStructs)
+$([foreach]struct[in]portAndTypeInformationStructs)
         this->typeDomain.AddTypeDefinition(GetTypeDefinition$(struct.name)());
 $([end-foreach])
     }

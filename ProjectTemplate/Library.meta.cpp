@@ -4,7 +4,7 @@ $([no-duplicate-lines])
 $([foreach]program[in]hierarchy[of-type]program)
 #include "$(program.template.files.program.format.include)"
 $([end-foreach])
-$([foreach]struct[in]portAndTypeDefinitionStructs)
+$([foreach]struct[in]portAndTypeInformationStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
 #include "$(template.files.library.format.include)"
@@ -20,7 +20,7 @@ using namespace Arp::Plc::Commons::Meta;
         (
             // Begin TypeDefinitions
             {
-$([foreach]struct[in]portAndTypeDefinitionStructs)
+$([foreach]struct[in]portAndTypeInformationStructs)
                 {   // TypeDefinition: $(struct.fullName)
                     DataType::Struct, CTN<$(struct.fullName)>(), sizeof(::$(struct.fullName)), alignof(::$(struct.fullName)), $(struct.attributes.format.standardAttributes),
                     {
