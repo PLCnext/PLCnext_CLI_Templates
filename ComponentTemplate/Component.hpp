@@ -61,8 +61,14 @@ public: /* Ports
            Ports ports;
 
            Create one (and only one) instance of this struct.
-           Apart from this single struct instance, there must be no other Component variables declared with the #port comment.
-           The only attribute that is allowed on the struct instance is "Hidden", and this is optional.
+           Apart from this single struct instance, it is recommended, that there should be no other Component variables 
+           declared with the #port comment.
+           The only attribute that is allowed on the struct instance is "Hidden", and this is optional. The attribute
+           will hide the structure field and simulate that the struct fields are direct ports of the component. In the
+           above example that would mean the component has only one port with the name "NameOfPort".
+           When there are two struts with the attribute "Hidden" and both structs have a field with the same name, there
+           will be an exception in the firmware. That is why only one struct is recommended. If multiple structs need to
+           be used the "Hidden" attribute should be omitted.
            The struct can contain as many members as necessary.
            The #name comment can be applied to each member of the struct, and is optional.
            The #name comment defines the GDS name of an individual port element. If omitted, the member variable name is used as the GDS name.
