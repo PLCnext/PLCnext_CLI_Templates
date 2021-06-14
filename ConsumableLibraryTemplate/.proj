@@ -2,4 +2,5 @@
 <ProjectSettings xmlns="http://www.phoenixcontact.com/schema/cliproject">
   <Type>consumablelibrary</Type>
   <Version>1.1</Version>
+  <Name>$(name)</Name>
 </ProjectSettings>
