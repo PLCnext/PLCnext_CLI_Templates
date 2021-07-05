@@ -52,6 +52,8 @@
   <DeployPostStep identifier="AcfLibraryBuilderDeployStep">
     <Arguments>
       <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
-    </Arguments>
+      <Argument name="librarydescription" has-value="true" short-name="d" help="A description of the library. If this option is not used, the description stored in the project settings file will be used instead."/>
+	  <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is not used, the library-version stored in the project settings file will be used instead."/>
+	</Arguments>
   </DeployPostStep>
 </TemplateDescription>
