@@ -54,6 +54,8 @@
       <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
       <Argument name="librarydescription" has-value="true" short-name="d" help="A description of the library. If this option is not used, the description stored in the project settings file will be used instead."/>
 	  <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is not used, the library-version stored in the project settings file will be used instead."/>
+	  <Argument name="engineerversion" has-value="true" short-name="e" help="The version of the PLCnext Engineer for which this library shall be built." />
+	  <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
 	</Arguments>
   </DeployPostStep>
 </TemplateDescription>
