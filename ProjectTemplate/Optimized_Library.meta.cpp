@@ -82,6 +82,19 @@ $([end-foreach])
 $([foreach]program[in]hierarchy[of-type]program)
         this->typeDomain.AddTypeDefinition(GetTypeDefinition$(program.name)());
 $([end-foreach])
+$([foreach]enum[in]portEnums)
+        {
+            TypeDefinition typeDefinition{DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringMacroReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), {}};
+$([foreach]symbol[in]enum.symbols)
+            {
+                FieldDefinition field{"$(symbol.name)", 0, DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringMacroReplace.format.convertStaticString), String::Empty, sizeof($(enum.fullName)), alignof($(enum.fullName)), {}, StandardAttribute::None};
+                field.GetChildTypeInfo().AddCustomAttribute("Value", static_cast<std::underlying_type<$(enum.fullName)>::type>($(enum.fullName)::$(symbol.name)));
+                typeDefinition.AddField(std::move(field));
+            }
+$([end-foreach])
+            typeDomain.AddTypeDefinition(std::move(typeDefinition));
+        }
+$([end-foreach])
     }
 
 $(namespace.format.end) // end of namespace $(namespace)
