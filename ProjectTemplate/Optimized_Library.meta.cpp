@@ -7,6 +7,9 @@ $([end-foreach])
 $([foreach]struct[in]portAndTypeInformationStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
+$([foreach]enum[in]portEnums)
+#include "$(enum.file.format.include)"
+$([end-foreach])
 #include "$(template.files.library.format.include)"
 $([end-no-duplicate-lines])
 
