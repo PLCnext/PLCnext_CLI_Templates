@@ -21,7 +21,7 @@ $([foreach]chunk[in]struct.fields[split]8)
     void AddFieldDefinitions_$(struct.name)_$(chunk.start)_$(chunk.end)(TypeDefinition& typeDefinition)
     {
 $([foreach]field[in]chunk)
-        typeDefinition.AddField({ "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity.format.metaDimensions) }, $(field.attributes.format.standardAttributes) });
+        typeDefinition.AddField({ "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity.format.multiplicityConstantReplace.format.metaDimensions) }, $(field.attributes.format.standardAttributes) });
 $([end-foreach])
     }
 
@@ -48,7 +48,7 @@ $([foreach]chunk[in]program.ports[split]8)
     void AddFieldDefinitions_$(program.name)_$(chunk.start)_$(chunk.end)(TypeDefinition& typeDefinition)
     {
 $([foreach]port[in]chunk)
-        typeDefinition.AddField({ "$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity.format.metaDimensions) }, $(port.attributes.format.standardAttributes) });
+        typeDefinition.AddField({ "$(port.name)", offsetof(::$(program.fullName), $(port.fieldName)), $(port.format.arpDataType), $(port.dataType.format.ctn), sizeof($(port.dataType.fullName)), alignof($(port.dataType.fullName)), { $(port.multiplicity.format.multiplicityConstantReplace.format.metaDimensions) }, $(port.attributes.format.standardAttributes) });
 $([end-foreach])
     }
 
@@ -87,10 +87,10 @@ $([foreach]program[in]hierarchy[of-type]program)
 $([end-foreach])
 $([foreach]enum[in]portEnums)
         {
-            TypeDefinition typeDefinition{DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringMacroReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), {}};
+            TypeDefinition typeDefinition{DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), {}};
 $([foreach]symbol[in]enum.symbols)
             {
-                FieldDefinition field{"$(symbol.name)", 0, DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringMacroReplace.format.convertStaticString), String::Empty, sizeof($(enum.fullName)), alignof($(enum.fullName)), {}, StandardAttribute::None};
+                FieldDefinition field{"$(symbol.name)", 0, DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), String::Empty, sizeof($(enum.fullName)), alignof($(enum.fullName)), {}, StandardAttribute::None};
                 field.GetChildTypeInfo().AddCustomAttribute("Value", static_cast<std::underlying_type<$(enum.fullName)>::type>($(enum.fullName)::$(symbol.name)));
                 typeDefinition.AddField(std::move(field));
             }

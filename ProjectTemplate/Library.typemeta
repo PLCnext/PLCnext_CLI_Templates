@@ -5,13 +5,13 @@ $([foreach]struct[in]portStructs.filterHiddenTypes)
     <Struct type="$(struct.name.format.escapeXmlNames)">
       <Fields>
 $([foreach]field[in]struct.fields.expandHiddenTypes)
-		<Field name="$(field.name.format.escapeXmlNames)" type="$(field.format.typeMetaDataFormat.format.stringMacroReplace.format.convertStaticString)" attributes="$(field.attributes.format.metaAttributes)" dimensions="$(field.multiplicity.format.dimensions)" />
+		<Field name="$(field.name.format.escapeXmlNames)" type="$(field.format.typeMetaDataFormat.format.stringConstantReplace.format.convertStaticString)" attributes="$(field.attributes.format.metaAttributes)" dimensions="$(field.multiplicity.format.multiplicityConstantReplace.format.dimensions)" />
 $([end-foreach])
       </Fields>
     </Struct>
 $([end-foreach])
 $([foreach]enum[in]portEnums)
-	<Enumeration type="$(enum.name.format.escapeXmlNames)" baseType="$(enum.baseType.format.typeMetaDataFormat.format.stringMacroReplace.format.convertStaticString)">
+	<Enumeration type="$(enum.name.format.escapeXmlNames)" baseType="$(enum.baseType.format.typeMetaDataFormat.format.stringConstantReplace.format.convertStaticString)">
 		<Symbols>
 $([foreach]symbol[in]enum.symbols)
 			<Symbol name="$(symbol.name.format.escapeXmlNames)" value="$(symbol.value)"/>

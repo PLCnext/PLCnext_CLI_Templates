@@ -149,9 +149,9 @@
   </FormatTemplate>
   <FormatTemplate name="convertStaticString">
     <RegexConversion ignore-case="true" pattern="StaticString&lt;(80)?&gt;" converted="StaticString"/>
-    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticString$(1)"/>
+    <RegexConversion ignore-case="true" pattern="StaticString(?!&lt;80&gt;)&lt;(.+)&gt;" converted="StaticString$(1)"/>
 	<RegexConversion ignore-case="true" pattern="StaticWString&lt;(80)?&gt;" converted="StaticWString"/>
-    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(\d+)&gt;" converted="StaticWString$(1)"/>
+    <RegexConversion ignore-case="true" pattern="StaticWString(?!&lt;80&gt;)&lt;(.+)&gt;" converted="StaticWString$(1)"/>
   </FormatTemplate>
   <FormatTemplate name="escapeXmlNames">
     <TemplateConversion template="$(value.format.escapeAmp.format.escapeLt.format.escapeGt.format.escapeQuote.format.escapeApos)"/>
