@@ -20,6 +20,21 @@
 		  <Enumeration>Hidden</Enumeration>
 		</ValueRestriction>
 	</FieldTemplate>
+	<FieldTemplate name="attributes" has-value="true" multiplicity="OneOrMore" split="|" default-value="None" supportedFirmwareVersions="22.0">
+		<ValueRestriction ignore-case="true">
+			<Enumeration>Input</Enumeration>
+			<Enumeration>Output</Enumeration>
+			<Enumeration>ReadOnly</Enumeration>
+			<Enumeration>Retain</Enumeration>
+			<Enumeration>Opc</Enumeration>
+			<Enumeration>Ehmi</Enumeration>
+			<Enumeration>ProfiCloud</Enumeration>
+			<Enumeration>Archive</Enumeration>
+			<Enumeration>None</Enumeration>
+			<Enumeration>Hidden</Enumeration>
+			<Enumeration>Redundant</Enumeration>
+		</ValueRestriction>
+	</FieldTemplate>
 	<FieldTemplate name="typeinformation"/>
 </FieldTemplates>
 
