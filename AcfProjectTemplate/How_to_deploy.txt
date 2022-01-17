@@ -1,18 +1,18 @@
-﻿+ Copy everything from the target output folder to the target to /opt/plcnext/projects/<UniqueFolderName>
-	+ The UniqueFolderName can be anything, it is needed in the next step
-+ Add a new file /opt/plcnext/projects/Default/<UniqueFolderName>.acf.config with the following content:
+﻿+ Create new acf-project folder on plc-target  /opt/plcnext/projects/<UniqueFolderName>
++ Copy the file "<Project>Library.acf.config" and folder "lib"  from the project target output  ../<Project>/bin/<Target>/<buildtype> to the just created folder on the plc target.
++ Create a new file with name <UniqueFolderName>.acf.config and the following content:
 
-<?xml version="1.0" encoding="UTF-8"?>
-<AcfConfigurationDocument 
-  xmlns="http://www.phoenixcontact.com/schema/acfconfig"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.phoenixcontact.com/schema/acfconfig" 
-  schemaVersion="1.0" >
+  <?xml version="1.0" encoding="UTF-8"?>
+  <AcfConfigurationDocument
+    xmlns="http://www.phoenixcontact.com/schema/acfconfig"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.phoenixcontact.com/schema/acfconfig"
+    schemaVersion="1.0" >
 
-  <Includes>
-    <Include path="$ARP_PROJECTS_DIR$/<UniqueFolderName>/*.acf.config" />
-  </Includes>
+   <Includes>
+      <Include path="$ARP_PROJECTS_DIR$/<UniqueFolderName>/*.acf.config" />
+   </Includes>
  
-</AcfConfigurationDocument>
+ </AcfConfigurationDocument>
 
-+ Restart the device
++ Copy the new created file "<UniqueFolderName>.acf.config" to the existing plc target folder /opt/plcnext/projects/Default
