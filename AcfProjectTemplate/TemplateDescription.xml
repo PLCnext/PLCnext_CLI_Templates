@@ -33,6 +33,8 @@
 				 generator="Config" deployPath="."/>
   <GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
         		 generator="Config" deployPath="."/>
+  <GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate)"
+				   generator="Config" deployPath="."/>
   <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>
@@ -49,6 +51,11 @@
     <Description>creates a new acfproject in the directory 'ProjectName' with the component 'SomeComponent' in the namespace 'SomeNamespace'</Description>
   </Example>
   <GenerateStep generator="code" identifier="AcfGenerateStep" />
+  <GenerateStep generator="config">
+    <Arguments>
+      <Argument name="no-datatypes-worksheet" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
+    </Arguments>
+  </GenerateStep>
   <DeployPostStep identifier="AcfLibraryBuilderDeployStep">
     <Arguments>
       <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
