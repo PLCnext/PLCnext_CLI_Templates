@@ -11,10 +11,12 @@ $([foreach]enum[in]portEnums)
     $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $(enum.format.iecDataTypeFormat);
 
 $([end-foreach])
+$([no-duplicate-lines])
 $([foreach]array[in]portArrays)
     $(array.name)Array : ARRAY [$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity)] OF $(array.format.iecDataTypeFormat);
 
 $([end-foreach])
+$([end-no-duplicate-lines])
 $([foreach]field[in]variablePortStrings)
     $(field.name)$(field.datatype.format.stringConstantReplace.format.convertIecString) : $(field.format.iecDataTypeFormat);
     

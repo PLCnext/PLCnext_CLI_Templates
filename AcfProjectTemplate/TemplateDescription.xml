@@ -21,7 +21,7 @@
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
 				 generator="code" aggregated="generated.cpp" minversion="1.2" />
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="old_Library.cpp"
-	   			 generator="code" aggregated="generated.cpp" maxversion=" 1.1"/>
+	   			 generator="code" aggregated="generated.cpp" maxversion="1.1"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
 				 generator="code" aggregated="generated.hpp"
 				 key="library"/>

@@ -41,8 +41,10 @@
 				   generator="Config" deployPath="."/>
 	<GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
 				   generator="Config" deployPath="."/>
-	<GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate)"
-				   generator="Config" deployPath="."/>
+	<GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate) and not $(generatedtarraynamebytype)"
+				   generator="Config" deployPath="." />
+  <GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes_v2.dt" condition="$(origin.no-datatypes-worksheet.negate) and $(generatedtarraynamebytype)"
+				   generator="Config" deployPath="." />
   <Description>Create a new project. The project is a template for user programs. They are managed by the PLM (Program Library Manager). For more information visit the Help Center in the PLCnext Community.</Description>
   <Example>
     <Arguments>

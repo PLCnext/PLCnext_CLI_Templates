@@ -177,7 +177,13 @@
   <FormatTemplate name="checkForArray">
     <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
   </FormatTemplate>
+  <FormatTemplate name="checkForArray_v2">
+    <ConditionalConversion condition="$(isArray)" template="ARRAY_$(format.iecDataTypeFormat)_$(multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2)"/>
+  </FormatTemplate>
   <FormatTemplate name="listMultiplicity" multiplicity="OneOrMore" seperator=", ">
 	  <TemplateConversion template="0..$(decrement)"/>
+  </FormatTemplate>
+  <FormatTemplate name="listMultiplicity_v2" multiplicity="OneOrMore" seperator=", ">
+    <TemplateConversion template="0_$(decrement)"/>
   </FormatTemplate>
 </FormatTemplates>
