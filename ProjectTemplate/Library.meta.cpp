@@ -45,9 +45,23 @@ $([end-foreach])
                     }
                 },
 $([end-foreach])
+$([if]$(minTargetVersion) < 20.3)
+$([foreach]enum[in]portEnums)
+                {
+                    DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), 
+                    {
+                        // FieldDefinitions:
+$([foreach]symbol[in]enum.symbols)
+                        { "$(symbol.name)", 0, DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), String::Empty, sizeof($(enum.fullName)), alignof($(enum.fullName)), {}, StandardAttribute::None },
+$([end-foreach])
+                    }
+                },
+$([end-foreach])
+$([end-if])
             }
             // End TypeDefinitions
         );
+$([if]$(minTargetVersion) >= 20.3)
 $([foreach]enum[in]portEnums)
         {
             TypeDefinition typeDefinition{DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), {}};
@@ -61,6 +75,7 @@ $([end-foreach])
             typeDomain.AddTypeDefinition(std::move(typeDefinition));
         }
 $([end-foreach])
+$([end-if])
     }
 
 $(namespace.format.end) // end of namespace $(namespace)
