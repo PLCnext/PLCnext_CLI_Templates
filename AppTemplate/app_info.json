@@ -1,0 +1,9 @@
+{
+    "plcnextapp": {
+        "name": "$(name)",
+        "identifier": "00000000000000",
+        "version": "1.0",
+        "target": "AXC F 2152",
+        "minfirmware_version": "22.0.0"
+    }
+}
