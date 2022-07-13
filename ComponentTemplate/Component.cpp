@@ -42,8 +42,9 @@ void $(name)::ResetConfig()
 
 void $(name)::PowerDown()
 {
-    // implement this only if data must be retained even on power down event
-    // Available with 2021.6 FW
+	// implement this only if data must be retained even on power down event
+	// will work only for PLCnext controllers with an "Integrated uninterruptible power supply (UPS)"
+	// Available with 2021.6 FW
 }
 
 $(namespace.format.end) // end of namespace $(namespace)

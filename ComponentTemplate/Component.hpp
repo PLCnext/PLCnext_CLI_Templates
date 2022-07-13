@@ -55,6 +55,7 @@ public: /* Ports
                Arp::boolean portField = false;
                // The GDS name is "<componentName>/NameOfPort" if the struct is declared as Hidden
                // otherwise the GDS name is "<componentName>/PORTS.NameOfPort"
+			   // If a component port is attributed with "Retain" additional measures need to be implemented. Fur further details refer to chapter "Component ports" in the topic "IComponent and IProgram" of https://www.plcnext.help
            };
            
            //#port
