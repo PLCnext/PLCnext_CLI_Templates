@@ -171,6 +171,19 @@
   <FormatTemplate name="escapeAmp" multiplicity="OneOrMore" seperator="&amp;amp;">
     <Split>&amp;</Split>
   </FormatTemplate>
+  <FormatTemplate name="escapeTypeName" multiplicity="OneOrMore" seperator="_">
+    <Split>::</Split>
+    <Split>&lt;</Split>
+    <Split>&gt;</Split>
+    <Split>,</Split>
+    <Split>_</Split>
+  </FormatTemplate>
+  <FormatTemplate name="trim" multiplicity="OneOrMore" seperator="">
+    <Split> </Split>
+  </FormatTemplate>
+  <FormatTemplate name="escapeTypenameForOffset">
+    <ConditionalConversion condition="$(containsltgt)" template="offsetof_$(value.format.escapeTypeName.format.trim)"/>
+  </FormatTemplate>
   <FormatTemplate name="listNamesAndValues" multiplicity="OneOrMore" seperator=", ">
 	<TemplateConversion template="$(name)$([if-specified]value) := $(value)$([end-if-specified])"/>
   </FormatTemplate>
@@ -185,5 +198,14 @@
   </FormatTemplate>
   <FormatTemplate name="listMultiplicity_v2" multiplicity="OneOrMore" seperator=", ">
     <TemplateConversion template="0_$(decrement)"/>
+  </FormatTemplate>
+  <FormatTemplate name="escapeTemplatedStructName">
+    <TemplateConversion template="$(format.trim.format.escapeTypeName.format.noDuplicateUnderscore.format.removeTrailingUnderscore)"/>
+  </FormatTemplate>
+  <FormatTemplate name="noDuplicateUnderscore" multiplicity="OneOrMore" seperator="_">
+    <Split>__</Split>
+  </FormatTemplate>
+  <FormatTemplate name="removeTrailingUnderscore" >
+    <RegexConversion pattern="(.+[^_])_*" converted="$(1)"/>
   </FormatTemplate>
 </FormatTemplates>

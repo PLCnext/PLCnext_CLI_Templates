@@ -16,6 +16,9 @@ using namespace Arp::Plc::Commons::Meta;
     
     void $(name.format.lastNamespacePart.format.escapeProjectName)Library::InitializeTypeDomain()
     {
+$([foreach]struct[in]portAndTypeInformationStructs)$([if]$(struct.fullName.containsltgt))
+        using $(struct.fullName.format.escapeTypenameForOffset) = $(struct.fullName);
+$([end-if])$([end-foreach])
         this->typeDomain.AddTypeDefinitions
         (
             // Begin TypeDefinitions
@@ -26,7 +29,7 @@ $([foreach]struct[in]portAndTypeInformationStructs)
                     {
                         // FieldDefinitions:
 $([foreach]field[in]struct.fields)
-                        { "$(field.name)", offsetof(::$(struct.fullName), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity.format.multiplicityConstantReplace.format.metaDimensions) }, $(field.attributes.format.standardAttributes) },
+                        { "$(field.name)", offsetof($([if]$(struct.fullName.containsltgt.negate))::$([end-if])$(struct.fullName.format.escapeTypenameForOffset), $(field.fieldName)), $(field.format.arpDataType), $(field.dataType.format.ctn), sizeof($(field.dataType.fullName)), alignof($(field.dataType.fullName)), { $(field.multiplicity.format.multiplicityConstantReplace.format.metaDimensions) }, $(field.attributes.format.standardAttributes) },
 $([end-foreach])
                     }
                 },
