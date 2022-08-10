@@ -2,7 +2,7 @@
 <FieldTemplates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
 	<FieldTemplate name="port"/>
 	<FieldTemplate name="name" has-value="true" default-value="$(fieldName)">
-		<ValueRestriction min-length="2" max-length="128">
+		<ValueRestriction min-length="2" max-length="128" description="An IEC-conform name that does not match any IEC elementary data type.">
 			<Pattern>(?!((?i)^((SAFE)?(BOOL|BYTE|((D|L)?WORD)|(U?(S|D|L)?INT)|(L?(REAL|TIME|T|DATE|D|DATE_AND_TIME|DT|TIME_OF_DAY|TOD))|(W?(STRING|CHAR))|ANALOG))$))(_|==?|-+|\+\+?|##?|:|&amp;|\/|\*)?([0-9a-zA-Z]+(_|&lt;|&gt;|==?|-+|\+\+?|##?|:|&amp;|\/|\*)?)+</Pattern>
 		</ValueRestriction>
 	</FieldTemplate>

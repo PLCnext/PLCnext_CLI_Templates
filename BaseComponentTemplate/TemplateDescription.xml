@@ -4,7 +4,7 @@
   <Arguments>
     <Argument name="path" short-name="p" help="Absolute path to the project settings file." default="./plcnext.proj" has-value="true"/>
     <Argument name="namespace" default="$(project.namespace)">
-      <ValueRestriction>
+      <ValueRestriction description="This must be a valid C++ namespace name.">
         <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
       </ValueRestriction>
     </Argument>

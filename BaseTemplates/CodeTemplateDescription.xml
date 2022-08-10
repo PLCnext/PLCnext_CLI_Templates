@@ -4,7 +4,7 @@
 		<Argument name="namespace" short-name="s" has-value="true" help="The namespace for the new $(template.name)."/>
 		<Argument name="output" default="" format="srcBasePath" help="Absolute path or relative path, that is relative to the source directory."/>
     <Argument name="name">
-      <ValueRestriction min-length="2" max-length="128">
+      <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
         <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
       </ValueRestriction>
     </Argument>

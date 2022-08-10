@@ -3,12 +3,12 @@
                      xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier">
 	<Arguments>
 	  <Argument name="component" has-value="true" short-name="c" help="The name of the component which will be automatically created." default="$(name.format.lastNamespacePart)Component">
-	    <ValueRestriction>
+	    <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
 	      <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
 	    </ValueRestriction>
 	  </Argument>
 	  <Argument name="program" has-value="true" short-name="p" help="The name of the program which will be automatically created." default="$(name.format.lastNamespacePart)Program">
-	    <ValueRestriction>
+	    <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
 	      <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
 	    </ValueRestriction>
 	  </Argument>
