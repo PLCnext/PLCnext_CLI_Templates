@@ -1,5 +1,5 @@
 ﻿TYPE
-$([foreach]struct[in]portStructs)
+$([foreach]struct[in]portStructs.filterHiddenTypes)
     $(struct.name.format.escapeTemplatedStructName.format.convertToIECDatatype) : STRUCT
 $([foreach]field[in]struct.fields)
         $(field.name) : $(field.format.iecDataTypeFormat.format.checkForArray);
