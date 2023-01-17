@@ -46,6 +46,7 @@
   <ImportGroup Label="Shared" />
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
+  <Import Project="$(format.$)(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ItemDefinitionGroup>
     <ClCompile>
       <ForcedIncludeFiles>$(format.$)(ProjectDir)UndefClang.hpp</ForcedIncludeFiles>
@@ -66,14 +67,11 @@
    <PropertyGroup Condition="'$(format.$)(Configuration)|$(format.$)(Platform)'=='Debug - all Targets|x64'">
     <IncludePath>$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)/eCLR/$(format.$)(EclrVersion)/include;$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)/eCLR/$(format.$)(EclrVersion)/include/win64;$(format.$)(IncludePath);intermediate/code;src/</IncludePath>
   </PropertyGroup>
-
   <Target Name="PLCnextMain">
     <Error Text="PLCnext toolchain file PLCnext.targets is missing. Reinstall the PLCnCLI!" Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
     <Error Text="PLCnext toolchain file InterfaceBuilder.targets is missing." Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\InterfaceBuilder.targets')" />
     <CallTarget Targets="CheckPLCnextTools" Condition="Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
   </Target>
-
-  <Import Project="$(format.$)(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
   <Import Project="$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)VSCPP/PLCnCLI.targets" />
   <Import Project="$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)eCLR\PLCnext.targets"/>
