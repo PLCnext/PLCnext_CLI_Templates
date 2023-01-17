@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateDescription name="snfunctionblock" basedOn="codetemplate" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="20.6.0.343" 
+                     version="1.0" isRelevantForProjectNamespace="true" xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+	<File name="$(name).cs" template="NativeFunctionBlock.cs" key="nativefunctionblock" path="$(output)"/>
+	<Description>Create a shared native functionblock to be used in IEC code. Parts of the implementation can be written in C/C++. The template should be used inside a shared native project only.</Description>
+  <Relationship name="project" type="snproject"/>
+  <Arguments>
+    <Argument name="output" default="../$(root.CSharpProjectPath)"/>
+    <Argument name="name" short-name="n" default="NativeFunctionBlock" help="Name of the $(template.name)." has-value="true"/>
+    <Argument name="path" short-name="p" help="Absolute path to the project settings file." default="./plcnext.proj" has-value="true"/>
+    <Argument name="namespace" default="$(project.namespace)">
+      <ValueRestriction description="This must be a valid C# namespace name.">
+        <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
+      </ValueRestriction>
+    </Argument>
+  </Arguments>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="MyFunctionBlock"/>
+      <Argument name="path" value="Path/To/Project"/>
+    </Arguments>
+    <Description>creates a new shared native functionblock 'MyFunctionBlock' in the 'src' directory</Description>
+  </Example>
+</TemplateDescription>

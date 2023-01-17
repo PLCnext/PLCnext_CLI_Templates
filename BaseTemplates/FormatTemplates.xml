@@ -208,4 +208,7 @@
   <FormatTemplate name="removeTrailingUnderscore" >
     <RegexConversion pattern="(.+[^_])_*" converted="$(1)"/>
   </FormatTemplate>
+  <FormatTemplate name="$">
+    <RegexConversion pattern=".*" converted="$" />
+  </FormatTemplate>
 </FormatTemplates>

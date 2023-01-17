@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateDescription name="snfunction" basedOn="codetemplate" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="20.6.0.343" 
+                     version="1.0" isRelevantForProjectNamespace="true" xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+	<File name="$(name).cs" template="NativeFunction.cs" key="nativefunction" path="$(output)"/>
+	<Description>Create a shared native function to be used in IEC code. Parts of the implementation can be written in C/C++. The template should be used inside a shared native project only.</Description>
+  <Relationship name="project" type="snproject"/>
+  <Arguments>
+    <Argument name="output" default="../$(root.CSharpProjectPath)"/>
+    <Argument name="name" short-name="n" default="NativeFunction" help="Name of the $(template.name)." has-value="true"/>
+    <Argument name="path" short-name="p" help="Absolute path to the project settings file." default="./plcnext.proj" has-value="true"/>
+    <Argument name="namespace" default="$(project.namespace)">
+      <ValueRestriction description="This must be a valid C# namespace name.">
+        <Pattern>^(?:[a-zA-Z][a-zA-Z0-9_]*\.)*[a-zA-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
+      </ValueRestriction>
+    </Argument>
+    <Argument name="returntype" short-name="t" has-value="true" default="BOOL" help="The IEC returntype for the new $(template.name). Default is BOOL."/>
+    <Argument name="returnbyref" short-name="r" default="$([if]$(returntype.toupper.format.datatypeattribute.isEmpty))false$([else])true$([end-if])" help="Whether the returnvalue should be by reference. For STRING and ANY-datatypes this is always true and cannot be changed. In all other cases the default is false."/>
+  </Arguments>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="MyFunction"/>
+      <Argument name="path" value="Path/To/Project"/>
+    </Arguments>
+    <Description>creates a new shared native function 'MyFunction' in the 'src' directory with the returntype 'bool'</Description>
+  </Example>
+  <Example>
+    <Arguments>
+      <Argument name="name" value="MyFunction"/>
+      <Argument name="returntype" value="STRING"/>
+      <Argument name="path" value="Path/To/Project"/>
+    </Arguments>
+    <Description>creates a new shared native function 'MyFunction' with the returntype STRING</Description>
+  </Example>
+</TemplateDescription>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormatTemplates xmlns="http://www.phoenixcontact.com/schema/clitemplates">
+  <FormatTemplate name="csharpdatatype">
+    <RegexConversion ignore-case="true" pattern="ANY" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_MAGNITUDE" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_NUM" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_INT" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_SIGNED" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_UNSIGNED" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_REAL" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_BIT" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="ANY_ELEMENTARY" converted="Any"/>
+    <RegexConversion ignore-case="true" pattern="BOOL" converted="bool"/>
+    <RegexConversion ignore-case="true" pattern="SINT" converted="sbyte"/>
+    <RegexConversion ignore-case="true" pattern="INT" converted="short"/>
+    <RegexConversion ignore-case="true" pattern="DINT" converted="int"/>
+    <RegexConversion ignore-case="true" pattern="LINT" converted="long"/>
+    <RegexConversion ignore-case="true" pattern="USINT" converted="byte"/>
+    <RegexConversion ignore-case="true" pattern="UINT" converted="ushort"/>
+    <RegexConversion ignore-case="true" pattern="UDINT" converted="uint"/>
+    <RegexConversion ignore-case="true" pattern="ULINT" converted="ulong"/>
+    <RegexConversion ignore-case="true" pattern="BYTE" converted="byte"/>
+    <RegexConversion ignore-case="true" pattern="WORD" converted="ushort"/>
+    <RegexConversion ignore-case="true" pattern="DWORD" converted="uint"/>
+    <RegexConversion ignore-case="true" pattern="LWORD" converted="ulong"/>
+    <RegexConversion ignore-case="true" pattern="TIME" converted="uint"/>
+    <RegexConversion ignore-case="true" pattern="REAL" converted="float"/>
+    <RegexConversion ignore-case="true" pattern="LREAL" converted="double"/>
+    <RegexConversion ignore-case="true" pattern="STRING" converted="IecStringEx"/>
+    <RegexConversion pattern="(.*)" converted="$(1)"/>
+  </FormatTemplate>
+  <FormatTemplate name="initvalue">
+    <RegexConversion pattern="Any" converted=""/>
+    <RegexConversion pattern="bool" converted="false"/>
+    <RegexConversion pattern="sbyte" converted="0"/>
+    <RegexConversion pattern="short" converted="0"/>
+    <RegexConversion pattern="int" converted="0"/>
+    <RegexConversion pattern="long" converted="0"/>
+    <RegexConversion pattern="byte" converted="0"/>
+    <RegexConversion pattern="ushort" converted="0"/>
+    <RegexConversion pattern="uint" converted="0"/>
+    <RegexConversion pattern="ulong" converted="0"/>
+    <RegexConversion pattern="float" converted="0.0f"/>
+    <RegexConversion pattern="double" converted="0.0"/>
+    <RegexConversion pattern="IecStringEx" converted=""/>
+    <RegexConversion pattern="(.*)" converted="new $(1)()"/>
+  </FormatTemplate>
+  <FormatTemplate name="datatypeattribute">
+    <RegexConversion pattern="(TIME)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(LTIME)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(LDATE)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(LTOD)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(LDT)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(BYTE)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(WORD)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(DWORD)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(LWORD)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(ANY)" converted=", DataType(&quot;$(1)&quot;)"/>
+    <RegexConversion pattern="(.*)" converted=""/>
+  </FormatTemplate>
+  <FormatTemplate name="isforcedreturnbyref">
+    <RegexConversion ignore-case="true" pattern="ANY" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_MAGNITUDE" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_NUM" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_INT" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_SIGNED" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_UNSIGNED" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_REAL" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_BIT" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="ANY_ELEMENTARY" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="STRING" converted="true"/>
+    <RegexConversion ignore-case="true" pattern="(.*)" converted="false"/>
+  </FormatTemplate>
+</FormatTemplates>
