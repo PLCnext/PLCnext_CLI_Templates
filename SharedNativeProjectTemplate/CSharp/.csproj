@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project InitialTargets="PLCnextMain" ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project InitialTargets="PLCnextMain" ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(format.$)(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(format.$)(Platform)' == '' ">AnyCPU</Platform>
@@ -58,9 +58,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="ProjectItems\LibraryDescription.xml" />
-    <Content Include="Cli\$(name)-template32.h" />
-    <Content Include="Cli\$(name)-template64.h" />
-    <Content Include="Cli\$(name)-template.cpp" />
+    <Content Include="Cli\*-template.h" />
+    <Content Include="Cli\*-template.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,7 +98,6 @@
 
   <Target Name="PLCnextMain">
     <Error Text="PLCnext toolchain file PLCnext.targets is missing. Reinstall the PLCnCLI!" Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
-    <Error Text="PLCnext toolchain file InterfaceBuilder.targets is missing." Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\InterfaceBuilder.targets')" />
     <CallTarget Targets="CheckPLCnextTools" Condition="Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
   </Target>
 
