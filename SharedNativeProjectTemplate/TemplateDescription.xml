@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TemplateDescription name="snproject" isRoot="true" basedOn="template" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
                      xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier"
-                     generateEngine="SharedNativeGenerateEngine" buildEngine="SharedNativeBuilder">
+                     generateEngine="SharedNativeGenerateEngine" buildEngine="SharedNativeBuilder" deployEngine="SharedNativeDeployEngine">
   <Arguments>
     <Argument name="name" default="$(output.format.directoryName.format.escapeProjectName)">
       <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
@@ -12,7 +12,7 @@
   </Arguments>
   <File name="$(name)CSharp/$(name)CSharp.csproj" template="CSharp/.csproj"/>
   <File name="$(name)CSharp/Properties/AssemblyInfo.cs" template="CSharp/Properties/AssemblyInfo.cs"/>
-  <File name="$(name)CSharp/ProjectItems/LibraryDescription.xml" template="CSharp/ProjectItems/LibraryDescription.xml"/>
+  <File name="$(name)CSharp/ProjectItems/LibraryDescription.xml" template="CSharp/ProjectItems/LibraryDescription.xml" deployPath="."/>
   <File name="$(name)Cpp/src/$(name).h" template="Cpp/.h"/>
   <File name="$(name)Cpp/CMakeLists.txt" template="Cpp/CMakeLists.txt"/>
   <File name="$(name)Cpp/plcnext.proj" template="Cpp/.proj"/>
@@ -25,4 +25,13 @@
       <Argument name="buildtype" short-name="b" has-value="true" help="Only for snprojects. Build type, e.g. Release"/>
     </Arguments>
   </GenerateStep>
+  <DeployPostStep identifier="SharedNativeLibraryBuilderDeployStep">
+    <Arguments>
+      <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
+      <Argument name="librarydescription" has-value="true" short-name="d" help="A description of the library. If this option is used, a project configuration file will be ignored. Use \n for linebreak and \&quot; for quotation mark "/>
+      <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is used, a project configuration file will be ignored."/>
+      <Argument name="engineerversion" has-value="true" short-name="e" help="The version of the PLCnext Engineer for which this library shall be built." />
+      <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
+    </Arguments>
+  </DeployPostStep>
 </TemplateDescription>
