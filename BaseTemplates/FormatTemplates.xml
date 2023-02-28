@@ -140,6 +140,9 @@
   <FormatTemplate name="cppFullName" multiplicity="OneOrMore" seperator="::">
     <Split>.</Split>
   </FormatTemplate>
+  <FormatTemplate name="datatypeNamespace" multiplicity="OneOrMore" seperator=".">
+    <Split>::</Split>
+  </FormatTemplate>
   <FormatTemplate name="startUppercase">
     <RegexConversion pattern="(?&lt;value&gt;.+)" converted="$(u:value)"/>
   </FormatTemplate>
@@ -178,6 +181,9 @@
     <Split>,</Split>
     <Split>_</Split>
   </FormatTemplate>
+  <FormatTemplate name="escapeWithUnderscore" multiplicity="OneOrMore" seperator="_">
+    <Split>.</Split>
+  </FormatTemplate>
   <FormatTemplate name="trim" multiplicity="OneOrMore" seperator="">
     <Split> </Split>
   </FormatTemplate>
@@ -191,7 +197,7 @@
     <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
   </FormatTemplate>
   <FormatTemplate name="checkForArray_v2">
-    <ConditionalConversion condition="$(isArray)" template="ARRAY_$(format.iecDataTypeFormat)_$(multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2)"/>
+    <ConditionalConversion condition="$(isArray)" template="ARRAY_$([if]$(origin.generate-namespaces))$(iecdatatypenamespace.format.datatypeNamespace.format.escapeTypeName.format.escapeWithUnderscore)$([end-if])$(format.iecDataTypeFormat)_$(multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2)"/>
   </FormatTemplate>
   <FormatTemplate name="listMultiplicity" multiplicity="OneOrMore" seperator=", ">
 	  <TemplateConversion template="0..$(decrement)"/>

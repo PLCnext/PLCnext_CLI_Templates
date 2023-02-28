@@ -1,24 +1,39 @@
-﻿TYPE
-$([foreach]struct[in]portStructs.filterHiddenTypes)
+﻿$([foreach]struct[in]portStructs.filterHiddenTypes)
+$([if]$(origin.generate-namespaces))
+NAMESPACE $(struct.namespace.format.datatypeNamespace)
+$([end-if])
+TYPE
     $(struct.name.format.escapeTemplatedStructName.format.convertToIECDatatype) : STRUCT
 $([foreach]field[in]struct.fields)
-        $(field.name) : $(field.format.iecDataTypeFormat.format.checkForArray);
+        $(field.name) : $([if]$(origin.generate-namespaces) and $(field.isarray.negate))$(field.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(field.format.iecDataTypeFormat.format.checkForArray);
 $([end-foreach])
     END_STRUCT
+END_TYPE
+$([if]$(origin.generate-namespaces))END_NAMESPACE$([end-if])
 
 $([end-foreach])
 $([foreach]enum[in]portEnums)
-    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $(enum.format.iecDataTypeFormat);
+$([if]$(origin.generate-namespaces))
+NAMESPACE $(enum.namespace.format.datatypeNamespace)
+$([end-if])
+TYPE
+    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $([if]$(origin.generate-namespaces))$(enum.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(enum.format.iecDataTypeFormat);
+END_TYPE
+$([if]$(origin.generate-namespaces))END_NAMESPACE$([end-if])
 
 $([end-foreach])
+$([if]$(portArrays.isEmpty.negate) or $(variablePortStrings.isEmpty.negate))
+TYPE
+$([end-if])
 $([no-duplicate-lines])
 $([foreach]array[in]portArrays)
-    $(array.name)Array : ARRAY [$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity)] OF $(array.format.iecDataTypeFormat);
-
+    $(array.name)Array : ARRAY [$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity)] OF $([if]$(origin.generate-namespaces))$(array.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(array.format.iecDataTypeFormat);
 $([end-foreach])
 $([end-no-duplicate-lines])
+
 $([foreach]field[in]variablePortStrings)
     $(field.name)$(field.datatype.format.stringConstantReplace.format.convertIecString) : $(field.format.iecDataTypeFormat);
-    
 $([end-foreach])
+$([if]$(portArrays.isEmpty.negate) or $(variablePortStrings.isEmpty.negate))
 END_TYPE
+$([end-if])
