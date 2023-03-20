@@ -112,8 +112,8 @@
   <GenerateStep generator="config">
 	<Arguments>
 	  <Argument name="no-datatypes-worksheet" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
-    <Argument name="datatype-namespaces" help="Add this flag if datatypes worksheet shall be generated WITH namespaces. Default is that no namespaces will be generated."/>
-    <Argument name="no-datatype-namespaces" help="Add this flag if datatypes worksheet shall be generated WITHOUT namespaces. Default is that no namespaces will be generated."/>
+    <!--<Argument name="datatype-namespaces" help="Add this flag if datatypes worksheet shall be generated WITH namespaces. Default is that no namespaces will be generated."/>
+    <Argument name="no-datatype-namespaces" help="Add this flag if datatypes worksheet shall be generated WITHOUT namespaces. Default is that no namespaces will be generated."/>-->
 	</Arguments>
   </GenerateStep>
 </TemplateDescription>
