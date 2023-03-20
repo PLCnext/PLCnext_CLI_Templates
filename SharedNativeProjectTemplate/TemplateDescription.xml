@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TemplateDescription name="snproject" isRoot="true" basedOn="template" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0" 
                      xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier"
-                     generateEngine="SharedNativeGenerateEngine" buildEngine="SharedNativeBuilder" deployEngine="SharedNativeDeployEngine">
+                     generateEngine="SharedNativeGenerateEngine" deployEngine="SharedNativeDeployEngine">
   <Arguments>
     <Argument name="name" default="$(output.format.directoryName.format.escapeProjectName)">
       <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
@@ -13,16 +13,14 @@
   <File name="$(name)CSharp/$(name)CSharp.csproj" template="CSharp/.csproj"/>
   <File name="$(name)CSharp/Properties/AssemblyInfo.cs" template="CSharp/Properties/AssemblyInfo.cs"/>
   <File name="$(name)CSharp/ProjectItems/LibraryDescription.xml" template="CSharp/ProjectItems/LibraryDescription.xml" deployPath="."/>
-  <File name="$(name)Cpp/src/$(name).h" template="Cpp/.h"/>
+  <GeneratedFile name="$(name).h" template="Cpp/.h" generator="code"/>
   <File name="$(name)Cpp/CMakeLists.txt" template="Cpp/CMakeLists.txt"/>
   <File name="$(name)Cpp/plcnext.proj" template="Cpp/.proj"/>
-  <File name="$(name)Cpp/$(name)Cpp.vcxproj" template="Cpp/.vcxproj"/>
-  <File name="$(name)Cpp/$(name)Cpp.vcxproj.filters" template="Cpp/.vcxproj.filters"/>
   <Description>Create a new shared native project.</Description>
   <GenerateStep generator="code">
     <Arguments>
       <Argument name="msbuild" has-value="true" help="Only for snprojects. Path to msbuild."/>
-      <Argument name="buildtype" short-name="b" has-value="true" help="Only for snprojects. Build type, e.g. Release"/>
+      <Argument name="buildtype" short-name="b" has-value="true" help="Only for snprojects. Build type, e.g. Debug. Default is Release."/>
     </Arguments>
   </GenerateStep>
   <DeployPostStep identifier="SharedNativeLibraryBuilderDeployStep">

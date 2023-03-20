@@ -58,7 +58,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Include="ProjectItems\LibraryDescription.xml" />
-    <Content Include="Cli\*-template.h" />
+    <Content Include="Cli\*-template*.h" />
     <Content Include="Cli\*-template.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +91,7 @@
     <CreateNativeInterfaces>true</CreateNativeInterfaces>
     <!-- Build the Firmware library for PLCnext Engineer (*.pcwlx) -->
     <CreateEngineeringLibrary>false</CreateEngineeringLibrary>
-    
+    <PLCnCLIProjectType>snproject</PLCnCLIProjectType>
     <EclrProjectName>$(name)</EclrProjectName>
     <MinCliVersion>22.3.0</MinCliVersion>
   </PropertyGroup>

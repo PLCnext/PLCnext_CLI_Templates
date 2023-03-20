@@ -16,12 +16,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED ${Headers} ${Sources})
 
 set(PLCNEXT_TOOLCHAIN_INSTALLDIR $ENV{PLCNEXT_TOOLCHAIN_INSTALLDIR} CACHE STRING "toolchain install dir")
 set(ECLR_TOOLCHAIN_ROOT "${PLCNEXT_TOOLCHAIN_INSTALLDIR}/eCLR")
-set(ECLR_VERSION "" CACHE STRING "eClr Version")
-if (NOT CMAKE_C_FLAGS MATCHES "^(.*[ ])?-m64([ ].*)?$")
-  set(ECLR_TARGET_OS "linux")
-else()
-  set(ECLR_TARGET_OS "linux64")
-endif()
+include("${ECLR_TOOLCHAIN_ROOT}/EclrNative.cmake")
 
 ################# project include-paths ###############################################
 
