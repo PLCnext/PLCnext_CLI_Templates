@@ -14,7 +14,6 @@
 	<Include type="Template">AcfComponentTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">BaseComponentTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">ConsumableLibraryTemplate/TemplateDescription.xml</Include>
-	<Include type="Template">AppTemplate/TemplateDescription.xml</Include>
   <Include type="Template">SharedNativeProjectTemplate/TemplateDescription.xml</Include>
   <Include type="Template">SharedNativeFunctionTemplate/TemplateDescription.xml</Include>
   <Include type="Template">SharedNativeFunctionBlockTemplate/TemplateDescription.xml</Include>
