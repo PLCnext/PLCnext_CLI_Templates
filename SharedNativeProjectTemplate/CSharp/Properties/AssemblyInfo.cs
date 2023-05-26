@@ -38,6 +38,9 @@ using Iec61131.Engineering.Library;
 // file name of the native shared library without file extension
 [assembly: NativeDllFileName("lib$(name)")]
 // The shared library attribute flags
-[assembly: NativeDllFlags(NativeDllFlagsAttribute.LibraryModes.FileAffinityBootImage)]
+[assembly: NativeDllFlags(
+    NativeDllFlagsAttribute.LibraryModes.FileAffinityBootImage |
+    NativeDllFlagsAttribute.LibraryModes.DomainAffinityExplicit |
+    NativeDllFlagsAttribute.LibraryModes.DownloadChangeSupport)]
 
 [assembly: Library]
