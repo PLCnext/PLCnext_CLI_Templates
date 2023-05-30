@@ -35,7 +35,7 @@
         		 generator="Config" deployPath="."/>
   <GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate)"
 				   generator="Config" deployPath="."/>
-  <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). For more information visit the Help Center in the PLCnext Community.</Description>
+  <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). More help available in the PLCnext Community.</Description>
   <Example>
     <Arguments>
       <Argument name="name" value="ProjectName"/>
