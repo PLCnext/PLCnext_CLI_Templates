@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ProjectSettings xmlns="http://www.phoenixcontact.com/schema/cliproject">
   <Type>project</Type>
-  <Version>2.0</Version>
+  <Version>3.0</Version>
   <Name>$(name)</Name>
   <GenerateDTArrayNameByType>true</GenerateDTArrayNameByType>
+  <GenerateNamespaces>true</GenerateNamespaces>
 </ProjectSettings>
