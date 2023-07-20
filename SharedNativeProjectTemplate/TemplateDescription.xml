@@ -30,6 +30,7 @@
       <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is used, a project configuration file will be ignored."/>
       <Argument name="engineerversion" has-value="true" short-name="e" help="The version of the PLCnext Engineer for which this library shall be built." />
       <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
+      <Argument name="excludefiles" has-value="true" short-name="x" multiplicity="OneOrMore" separator=" " help="Files that should not be deployed. Files are separated by ' '. Will be excluded for all targets for which the deploy is executed. It can contain the wildcard '*'. This option will be ignored if 'files' option is used."/>
     </Arguments>
   </DeployPostStep>
 </TemplateDescription>
