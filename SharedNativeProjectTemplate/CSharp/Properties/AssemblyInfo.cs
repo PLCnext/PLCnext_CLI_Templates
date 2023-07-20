@@ -33,14 +33,15 @@ using Iec61131.Engineering.Library;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-// search path for the native shared library, see readme.txt 
+// search path for the shared native library, see readme.txt 
 [assembly: NativeDll(@"")]
-// file name of the native shared library without file extension
+// file name of the shared native library without file extension
 [assembly: NativeDllFileName("lib$(name)")]
-// The shared library attribute flags
+// The shared native library attribute flags
 [assembly: NativeDllFlags(
     NativeDllFlagsAttribute.LibraryModes.FileAffinityBootImage |
     NativeDllFlagsAttribute.LibraryModes.DomainAffinityExplicit |
     NativeDllFlagsAttribute.LibraryModes.DownloadChangeSupport)]
 
 [assembly: Library]
+[assembly: UseDotNetNamespace]
