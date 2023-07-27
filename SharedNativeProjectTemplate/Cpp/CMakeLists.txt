@@ -16,7 +16,7 @@ add_library(${CMAKE_PROJECT_NAME} SHARED ${Headers} ${Sources})
 
 set(PLCNEXT_TOOLCHAIN_INSTALLDIR $ENV{PLCNEXT_TOOLCHAIN_INSTALLDIR} CACHE STRING "toolchain install dir")
 set(ECLR_TOOLCHAIN_ROOT "${PLCNEXT_TOOLCHAIN_INSTALLDIR}/eCLR")
-include("${ECLR_TOOLCHAIN_ROOT}/EclrNative.cmake")
+include("${ECLR_TOOLCHAIN_ROOT}/EclrNative3_4.cmake")
 
 ################# project include-paths ###############################################
 
