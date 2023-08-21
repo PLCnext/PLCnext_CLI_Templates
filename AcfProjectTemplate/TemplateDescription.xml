@@ -29,12 +29,12 @@
 				 generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.meta.cpp" template="Optimized_Library.meta.cpp" condition="$(big-data-project)"
 				 generator="code" aggregated="generated.cpp"/>
-  <GeneratedFile name="$(namespace).libmeta" template="Library.libmeta"
-				 generator="Config" deployPath="."/>
+  <GeneratedFile name="$(namespace).libmeta"  template="Library.libmeta"
+				 generator="Config" deployPath="../../config"/>
   <GeneratedFile name="$(namespace).typemeta" template="Library.typemeta"
-        		 generator="Config" deployPath="."/>
+        		 generator="Config" deployPath="../../config"/>
   <GeneratedFile name="$(namespace)DataTypes.dt" template="DataTypes.dt" condition="$(origin.no-datatypes-worksheet.negate)"
-				   generator="Config" deployPath="."/>
+				   generator="Config" deployPath="../../config"/>
   <Description>Create a new acfproject.The acfproject is a template for component based platform development. The resulting component will be managed by the ACF (Application Component Framework). More help available in the PLCnext Community.</Description>
   <Example>
     <Arguments>

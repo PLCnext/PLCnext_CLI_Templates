@@ -13,7 +13,7 @@
 	<Relationship name="component" type="component"/>
 	<File name="$(name).cpp" template="Program.cpp" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
 	<File name="$(name).hpp" template="Program.hpp" key="program" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
-	<GeneratedFile name="$(name).progmeta" template="Program.progmeta" generator="Config" path="$(component.name)/$(name)" deployPath="$(component.name)/$(name)"/>
+	<GeneratedFile name="$(name).progmeta"  template="Program.progmeta" generator="Config" path="$(component.name)/$(name)" deployPath="../../config/$(component.name)/$(name)"/>
   <Description>Create a new program inside the project.</Description>
   <Example>
     <Arguments>
