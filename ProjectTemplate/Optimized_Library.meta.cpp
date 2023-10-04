@@ -7,7 +7,7 @@ $([end-foreach])
 $([foreach]struct[in]portAndTypeInformationStructs)
 #include "$(struct.file.format.include)"
 $([end-foreach])
-$([foreach]enum[in]portEnums)
+$([foreach]enum[in]portAndTypeInformationEnums)
 #include "$(enum.file.format.include)"
 $([end-foreach])
 #include "$(template.files.library.format.include)"
@@ -88,7 +88,7 @@ $([end-foreach])
 $([foreach]program[in]hierarchy[of-type]program)
         this->typeDomain.AddTypeDefinition(GetTypeDefinition$(program.name)());
 $([end-foreach])
-$([foreach]enum[in]portEnums)
+$([foreach]enum[in]portAndTypeInformationEnums)
         {
             TypeDefinition typeDefinition{DataType::Enum | DataType::$(enum.baseType.name.format.knownDataTypes.format.stringConstantReplace.format.convertStaticString), CTN<$(enum.fullName)>(), sizeof($(enum.fullName)), alignof($(enum.fullName)), $(enum.attributes.format.standardAttributes), {}};
 $([foreach]symbol[in]enum.symbols)
