@@ -4,6 +4,6 @@
   the 'target_link_libraries' call
     find_package($(name) REQUIRED)
 + Add in the CMakeLists.txt of the consuming project to the 
-  'target_link_libraries' call the previousely found package '$(name)'
+  'target_link_libraries' call the previously found package '$(name)'
 + Use public headers of this project by including them in the consuming project
   e.g. '#include "$(name)/$(name)Class.hpp"'
