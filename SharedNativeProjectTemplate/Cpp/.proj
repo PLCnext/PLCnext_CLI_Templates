@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ProjectSettings xmlns="http://www.phoenixcontact.com/schema/cliproject">
-  <Name>$(name)</Name>
   <Type>snproject</Type>
-  <Version>1.2</Version>
+  <Version>$(toolprojectversion)</Version>
+  <Name>$(name)</Name>
   <CSharpProjectPath>../$(name)CSharp</CSharpProjectPath>
 </ProjectSettings>
