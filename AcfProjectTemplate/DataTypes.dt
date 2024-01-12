@@ -27,7 +27,7 @@ TYPE
 $([end-if])
 $([no-duplicate-lines])
 $([foreach]array[in]portAndTypeInformationArrays)
-    ARRAY_$([if]$(origin.generate-namespaces))$(array.iecdatatypenamespace.format.datatypeNamespace.format.escapeTypeName.format.escapeWithUnderscore)$([end-if])$(array.format.iecDataTypeFormat)_$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2) : ARRAY [$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity)] OF $([if]$(origin.generate-namespaces))$(array.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(array.format.iecDataTypeFormat);
+    ARRAY_$([if]$(origin.generate-namespaces))$(array.iecdatatypenamespace.format.datatypeNamespace.format.escapeTypeName.format.escapeWithUnderscore)$([end-if])$(array.format.iecDataTypeFormat.format.escapeSquareBracket)_$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2) : ARRAY [$(array.multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity)] OF $([if]$(origin.generate-namespaces))$(array.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(array.format.iecDataTypeFormat);
 $([end-foreach])
 $([end-no-duplicate-lines])
 

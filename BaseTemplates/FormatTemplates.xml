@@ -174,6 +174,10 @@
   <FormatTemplate name="escapeAmp" multiplicity="OneOrMore" seperator="&amp;amp;">
     <Split>&amp;</Split>
   </FormatTemplate>
+  <FormatTemplate name="escapeSquareBracket" multiplicity="OneOrMore" seperator="">
+    <Split>[</Split>
+    <Split>]</Split>
+  </FormatTemplate>
   <FormatTemplate name="escapeTypeName" multiplicity="OneOrMore" seperator="_">
     <Split>::</Split>
     <Split>&lt;</Split>
@@ -197,7 +201,7 @@
     <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
   </FormatTemplate>
   <FormatTemplate name="checkForArray_v2">
-    <ConditionalConversion condition="$(isArray)" template="ARRAY_$([if]$(origin.generate-namespaces))$(iecdatatypenamespace.format.datatypeNamespace.format.escapeTypeName.format.escapeWithUnderscore)$([end-if])$(format.iecDataTypeFormat)_$(multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2)"/>
+    <ConditionalConversion condition="$(isArray)" template="ARRAY_$([if]$(origin.generate-namespaces))$(iecdatatypenamespace.format.datatypeNamespace.format.escapeTypeName.format.escapeWithUnderscore)$([end-if])$(format.iecDataTypeFormat.format.escapeSquareBracket)_$(multiplicity.format.multiplicityConstantReplace.throwIfMultidimensional.format.listMultiplicity_v2)"/>
   </FormatTemplate>
   <FormatTemplate name="listMultiplicity" multiplicity="OneOrMore" seperator=", ">
 	  <TemplateConversion template="0..$(decrement)"/>
