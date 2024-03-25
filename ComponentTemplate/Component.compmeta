@@ -3,7 +3,7 @@
   <Component type="$(name)">
     <ProgramIncludes>
 $([foreach]program[in]related[of-type]program)
-      <Include path="$(program.name)/$(program.name).progmeta" />
+$(program.checkForDuplicateName)      <Include path="$(program.name)/$(program.name).progmeta" />
 $([end-foreach])
     </ProgramIncludes>
     <Ports>

@@ -7,7 +7,7 @@
     </TypeIncludes>
     <ComponentIncludes>
 $([foreach]component[in]related[of-type]component)
-      <Include path="$(component.name)/$(component.name).compmeta" />
+$(component.checkForDuplicateName)      <Include path="$(component.name)/$(component.name).compmeta" />
 $([end-foreach])
     </ComponentIncludes>
   </Library>
