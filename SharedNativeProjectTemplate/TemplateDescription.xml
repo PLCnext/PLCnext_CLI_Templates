@@ -32,6 +32,16 @@
       <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
       <Argument name="excludefiles" has-value="true" short-name="x" multiplicity="OneOrMore" separator=" " help="Files that should not be deployed. Files are separated by ' '. Will be excluded for all targets for which the deploy is executed. It can contain the wildcard '*'. This option will be ignored if 'files' option is used."/>
       <Argument name="msbuild" has-value="true" help="Path to msbuild."/>
+      <!--signing options -->
+      <Argument name="sign" has-value="false" help="Set this option if the resulting library shall be signed. A private key, public key and at least one certificate need to be provided. They can be combined in one PKCS#12 archive or provided as separate PEM files. Set either --timestamp and provide a timestamp server through --timestampconfiguration to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
+      <Argument name="pkcs12" has-value="true" multiplicity="One" help="Path to PKCS#12 archive containing the private and public key and certificates for signing." />
+      <Argument name="privatekey" has-value="true" multiplicity="One" help="Path to PEM file containing the private key." />
+      <Argument name="publickey" has-value="true" multiplicity="One" help="Path to PEM file containing the public key." />
+      <Argument name="certificates" has-value="true" multiplicity="OneOrMore" separator="," help="Paths to PEM files containing certificates. Separated by ','." />
+      <Argument name="timestamp" has-value="false" help="Set either this option to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
+      <Argument name="notimestamp" has-value="false" help="Set either this option to get a CAdES-B signature or set '--timestampserver' and provide '--timestampconfiguration' to get CAdES-T." />
+      <Argument name="password" has-value="true" multiplicity="One" help="Password for private key file. If not set user will be prompted to enter the password when executing command." />
+      <Argument name="timestampconfiguration" has-value="true" multiplicity="One" help="Path to timestamp configuration file (.json) for setting e.g. timestampserver uri, proxy settings... See info center for details." />
     </Arguments>
   </DeployPostStep>
 </TemplateDescription>
