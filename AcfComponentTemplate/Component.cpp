@@ -5,10 +5,15 @@
 $(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Domain;
-
+#if ARP_ABI_VERSION_MAJOR < 2
 $(name)::$(name)(IApplication& application, const String& name)
 : ComponentBase(application, ::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance(), name, ComponentCategory::Custom)
 , MetaComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace())
+#else
+$(name)::$(name)(ILibrary& library, const String& name)
+    : ComponentBase(library, name, ComponentCategory::Custom, GetDefaultStartOrder())
+    , MetaComponentBase(::$(root.namespace.format.cppFullName)::$(root.name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance().GetNamespace())
+#endif
 {
 }
 
@@ -68,7 +73,7 @@ void $(name)::Dispose()
 
 void $(name)::PowerDown()
 {
-	// implement this only if data must be retained even on power down event
+	// implement this only if data shall be retained even on power down event
 	// will work only for PLCnext controllers with an "Integrated uninterruptible power supply (UPS)"
 	// Available with 2021.6 FW
 }

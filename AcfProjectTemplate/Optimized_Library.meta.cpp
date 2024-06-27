@@ -10,7 +10,6 @@ $([end-foreach])
 #include "$(template.files.library.format.include)"
 $([end-no-duplicate-lines])
 
-$(namespace.format.start)
 
 using namespace Arp::Plc::Commons::Meta;
     

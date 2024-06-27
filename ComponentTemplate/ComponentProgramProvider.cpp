@@ -5,6 +5,14 @@ $([end-foreach])
 
 $(namespace.format.start)
 
+#if ARP_ABI_VERSION_MAJOR < 2
+#else
+$(name)ProgramProvider::$(name)ProgramProvider($(name)& $(l:name)Arg)
+    : $(l:name)($(l:name)Arg)
+{
+}
+
+#endif
 IProgram::Ptr $(name)ProgramProvider::CreateProgramInternal(const String& programName, const String& programType)
 {
 $([foreach]program[in]related[of-type]program)

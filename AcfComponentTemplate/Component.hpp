@@ -1,24 +1,33 @@
 #pragma once
 #include "Arp/System/Core/Arp.h"
+#if ARP_ABI_VERSION_MAJOR < 2
 #include "Arp/System/Acf/ComponentBase.hpp"
 #include "Arp/System/Acf/IApplication.hpp"
+#else
+#include "Arp/Base/Acf/Commons/ComponentBase.hpp"
+#endif
 #include "Arp/Plc/Commons/Meta/MetaComponentBase.hpp"
 #include "Arp/System/Commons/Logging.h"
 
 $(namespace.format.start)
-
-using namespace Arp;
+#if ARP_ABI_VERSION_MAJOR < 2
 using namespace Arp::System::Acf;
+#else
+using namespace Arp::Base::Acf::Commons;
+#endif
+using namespace Arp;
 using namespace Arp::Plc::Commons::Meta;
 
 //$(settings.AttributePrefix)acfcomponent
 class $(name) : public ComponentBase, public MetaComponentBase, private Loggable<$(name)>
 {
-public: // typedefs
-
 public: // construction/destruction
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)(IApplication& application, const String& name);
     virtual ~$(name)() = default;
+#else
+    $(name)(ILibrary& library, const String& name);
+#endif
 
 public: // IComponent operations
     void Initialize() override;
@@ -36,11 +45,13 @@ public: // MetaComponentBase operations
     void RegisterComponentPorts() override;
 
 private: // methods
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)(const $(name)& arg) = delete;
     $(name)& operator= (const $(name)& arg) = delete;
 
 public: // static factory operations
     static IComponent::Ptr Create(Arp::System::Acf::IApplication& application, const String& name);
+#endif
 
 private: // fields
 
@@ -78,10 +89,10 @@ public: /* Ports
         */
 
 };
-
+#if ARP_ABI_VERSION_MAJOR < 2
 inline IComponent::Ptr $(name)::Create(Arp::System::Acf::IApplication& application, const String& name)
 {
     return IComponent::Ptr(new $(name)(application, name));
 }
-
+#endif
 $(namespace.format.end) // end of namespace $(namespace)

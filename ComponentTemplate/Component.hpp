@@ -1,7 +1,11 @@
 #pragma once
 #include "Arp/System/Core/Arp.h"
+#if ARP_ABI_VERSION_MAJOR < 2
 #include "Arp/System/Acf/ComponentBase.hpp"
 #include "Arp/System/Acf/IApplication.hpp"
+#else
+#include "Arp/Base/Acf/Commons/ComponentBase.hpp"
+#endif
 #include "Arp/Plc/Commons/Esm/ProgramComponentBase.hpp"
 #include "$(template.files.programProvider.format.include)"
 #include "Arp/Plc/Commons/Meta/MetaLibraryBase.hpp"
@@ -10,7 +14,11 @@
 $(namespace.format.start)
 
 using namespace Arp;
+#if ARP_ABI_VERSION_MAJOR < 2
 using namespace Arp::System::Acf;
+#else
+using namespace Arp::Base::Acf::Commons;
+#endif
 using namespace Arp::Plc::Commons::Esm;
 using namespace Arp::Plc::Commons::Meta;
 
@@ -20,8 +28,12 @@ class $(name) : public ComponentBase, public ProgramComponentBase, private Logga
 public: // typedefs
 
 public: // construction/destruction
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)(IApplication& application, const String& name);
     virtual ~$(name)() = default;
+#else
+    $(name)(ILibrary& library, const String& name);
+#endif
 
 public: // IComponent operations
     void Initialize() override;
@@ -34,11 +46,13 @@ public: // ProgramComponentBase operations
     void RegisterComponentPorts() override;
 
 private: // methods
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)(const $(name)& arg) = delete;
     $(name)& operator= (const $(name)& arg) = delete;
 
 public: // static factory operations
     static IComponent::Ptr Create(Arp::System::Acf::IApplication& application, const String& name);
+#endif
 
 private: // fields
     $(name)ProgramProvider programProvider;
@@ -77,9 +91,10 @@ public: /* Ports
         */
 };
 
+#if ARP_ABI_VERSION_MAJOR < 2
 inline IComponent::Ptr $(name)::Create(Arp::System::Acf::IApplication& application, const String& name)
 {
     return IComponent::Ptr(new $(name)(application, name));
 }
-
+#endif
 $(namespace.format.end) // end of namespace $(namespace)

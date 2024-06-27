@@ -18,11 +18,15 @@ public: // typedefs
 
 public: // construction/destruction
     $(name)($(component.fullName.format.cppFullName)& $(l:component.name)Arg, const String& name);
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)(const $(name)& arg) = delete;
     virtual ~$(name)() = default;
+#endif
 
 public: // operators
+#if ARP_ABI_VERSION_MAJOR < 2
     $(name)&  operator=(const $(name)& arg) = delete;
+#endif
 
 public: // properties
 
