@@ -47,7 +47,6 @@ $(name.format.lastNamespacePart.format.escapeProjectName)Library& $(name.format.
 }
 #endif
 
-$(namespace.format.end) // end of namespace $(namespace)
 
 #if ARP_ABI_VERSION_MAJOR < 2
 extern "C" ARP_CXX_SYMBOL_EXPORT ILibrary& ArpDynamicLibraryMain(AppDomain& appDomain)
@@ -55,7 +54,9 @@ extern "C" ARP_CXX_SYMBOL_EXPORT ILibrary& ArpDynamicLibraryMain(AppDomain& appD
     $(name.format.lastNamespacePart.format.escapeProjectName)Library::Main(appDomain);
     return  $(name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance();
 }
+$(namespace.format.end) // end of namespace $(namespace)
 #else
+$(namespace.format.end) // end of namespace $(namespace)
 extern "C" ARP_EXPORT Arp::Base::Acf::Commons::ILibrary& $(name)_MainEntry()
 {
     return  $(namespace.format.cppFullName)::$(name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance();

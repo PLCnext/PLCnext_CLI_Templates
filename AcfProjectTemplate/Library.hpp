@@ -19,7 +19,7 @@ using namespace Arp::Plc::Commons::Meta;
 using namespace Arp::Plc::Commons::Meta::TypeSystem;
 
 class $(name.format.lastNamespacePart.format.escapeProjectName)Library : public MetaLibraryBase
-#ifndef ARP_ABI_VERSION_MAJOR < 2
+#if ARP_ABI_VERSION_MAJOR < 2
 	, public Singleton<$(name.format.lastNamespacePart.format.escapeProjectName)Library>
 #endif
 {
