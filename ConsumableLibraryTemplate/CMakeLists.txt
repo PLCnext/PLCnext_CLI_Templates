@@ -55,22 +55,18 @@ endif()
 
 #######################################################################################
 
-################# set link options ####################################################
-# WARNING: Without --no-undefined the linker will not check, whether all necessary    #
-#          libraries are linked. When a library which is necessary is not linked,     #
-#          the firmware will crash and there will be NO indication why it crashed.    #
-#######################################################################################
-
-target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined)
-
+#### quick and dirty solution to make preview projects compilable with plcncli#########
+if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
+	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
+	set(PKG_CONFIG_EXECUTABLE ${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config.exe)
+endif()
 #######################################################################################
 
 ################# add link targets ####################################################
 
-find_package(ArpDevice REQUIRED)
-find_package(ArpProgramming REQUIRED)
+find_package(Arp REQUIRED)
 
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Arp:ALL)
 
 #######################################################################################
 

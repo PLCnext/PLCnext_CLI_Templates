@@ -28,8 +28,9 @@
     <Relationship name="component" value="$(component)"/>
 	</AddTemplate>
   <File name="plcnext.proj" template=".proj"/>
-  <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
-				   generator="code" aggregated="generated.cpp"/>
+    <File name="$(name.format.lastNamespacePart.format.escapeProjectName)LibraryInfo.hpp" template="LibraryInfo.hpp" path="src"/>
+    <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
+                   generator="code" aggregated="generated.cpp"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
 				   generator="code" aggregated="generated.hpp"
 				   key="library"/>
