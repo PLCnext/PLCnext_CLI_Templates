@@ -44,9 +44,16 @@ endif()
 
 #######################################################################################
 
-################# add link targets ####################################################
+################# set link options ####################################################
+# WARNING: Without --no-undefined the linker will not check, whether all necessary    #
+#          libraries are linked. When a library which is necessary is not linked,     #
+#          the firmware will crash and there will be NO indication why it crashed.    #
+#######################################################################################
 
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined)
 
+#######################################################################################
+                          
 #### quick and dirty solution to make preview projects compilable with plcncli#########
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
@@ -54,10 +61,17 @@ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 endif()
 #######################################################################################
 
-find_package(Arp REQUIRED)
+################# add link targets ####################################################
 
+find_package(Arp QUIET)
+find_package(ArpDevice REQUIRED)
+find_package(ArpProgramming REQUIRED)
+
+if(Arp_FOUND)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Arp::ALL)
-
+else()
+target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
+endif()   
 #######################################################################################
 
 ################# install ############################################################
