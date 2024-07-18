@@ -16,6 +16,7 @@
     </Arguments>
   </AddTemplate>
   <File name="plcnext.proj" template=".proj"/>
+  <File name="$(name.format.lastNamespacePart.format.escapeProjectName)LibraryInfo.hpp" template="LibraryInfo.hpp" path="src"/>
   <File name="How_to_deploy.txt" template="How_to_deploy.txt" deployPath="."/>
   <File name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.acf.config" deployPath="." template="acf.config" path="src"/>
   <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
