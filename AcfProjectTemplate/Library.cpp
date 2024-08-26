@@ -57,7 +57,7 @@ extern "C" ARP_CXX_SYMBOL_EXPORT ILibrary& ArpDynamicLibraryMain(AppDomain& appD
 $(namespace.format.end) // end of namespace $(namespace)
 #else
 $(namespace.format.end) // end of namespace $(namespace)
-extern "C" ARP_EXPORT Arp::Base::Acf::Commons::ILibrary& $(name)_MainEntry()
+extern "C" ARP_EXPORT Arp::Base::Acf::Commons::ILibrary& $(name.format.escapeDotProjectName)_MainEntry()
 {
     return  $(namespace.format.cppFullName)::$(name.format.lastNamespacePart.format.escapeProjectName)Library::GetInstance();
 }
