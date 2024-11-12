@@ -6,13 +6,13 @@
     <!--<ToolboxCategory Id="Hidden" IsHidden="true"/>-->
   </ToolboxCategories>
   <ProgramOrganizationUnits>
-    <!--<ProgramOrganizationUnit Name="POUName1" ToolboxCategoryId="Category1ID" Description="Text describing the POU">
+    <!--<ProgramOrganizationUnit Name="Namespace.POUName1" ToolboxCategoryId="Category1ID" Description="Text describing the POU">
       <FormalParameters>
         <FormalParameter Name="IN1" Description="Description In1"/>
         <FormalParameter Name="IN2" Description="Description In2"/>
         <FormalParameter Name="POUName1" Description="Description Return Value of FU"/>
       </FormalParameters>
     </ProgramOrganizationUnit>-->
-    <!--<ProgramOrganizationUnit Name="POUName2" ToolboxCategoryId="Category2ID" Description="Text describing the POU" />-->
+    <!--<ProgramOrganizationUnit Name="Namespace.POUName2" ToolboxCategoryId="Category2ID" Description="Text describing the POU" />-->
   </ProgramOrganizationUnits>
 </Library>
