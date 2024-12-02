@@ -1,11 +1,11 @@
 ﻿$([foreach]struct[in]portAndTypeInformationStructs.filterHiddenTypes)
 $([if]$(origin.generate-namespaces))
-NAMESPACE $(struct.namespace.format.datatypeNamespace)
+NAMESPACE $(struct.namespace.format.datatypeNamespace.validateIdentifier)
 $([end-if])
 TYPE
-    $(struct.name.format.escapeTemplatedStructName.format.convertToIECDatatype) : STRUCT
+    $(struct.name.format.escapeTemplatedStructName.format.convertToIECDatatype.validateIdentifier) : STRUCT
 $([foreach]field[in]struct.fields)
-        $(field.name) : $([if]$(origin.generate-namespaces) and $(field.isarray.negate))$(field.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(field.format.iecDataTypeFormat.format.checkForArray);
+        $(field.name.validateIdentifier) : $([if]$(origin.generate-namespaces) and $(field.isarray.negate))$(field.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(field.format.iecDataTypeFormat.format.checkForArray);
 $([end-foreach])
     END_STRUCT
 END_TYPE
@@ -14,10 +14,10 @@ $([if]$(origin.generate-namespaces))END_NAMESPACE$([end-if])
 $([end-foreach])
 $([foreach]enum[in]portAndTypeInformationEnums)
 $([if]$(origin.generate-namespaces))
-NAMESPACE $(enum.namespace.format.datatypeNamespace)
+NAMESPACE $(enum.namespace.format.datatypeNamespace.validateIdentifier)
 $([end-if])
 TYPE
-    $(enum.name) : ($(enum.symbols.format.listNamesAndValues)) OF $([if]$(origin.generate-namespaces))$(enum.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(enum.format.iecDataTypeFormat);
+    $(enum.name.validateIdentifier) : ($(enum.symbols.format.listNamesAndValues)) OF $([if]$(origin.generate-namespaces))$(enum.iecdatatypenamespace.format.datatypeNamespace)$([end-if])$(enum.format.iecDataTypeFormat);
 END_TYPE
 $([if]$(origin.generate-namespaces))END_NAMESPACE$([end-if])
 

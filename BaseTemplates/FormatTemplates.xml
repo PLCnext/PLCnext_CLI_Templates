@@ -195,7 +195,7 @@
     <ConditionalConversion condition="$(containsltgt)" template="offsetof_$(value.format.escapeTypeName.format.trim)"/>
   </FormatTemplate>
   <FormatTemplate name="listNamesAndValues" multiplicity="OneOrMore" seperator=", ">
-	<TemplateConversion template="$(name)$([if-specified]value) := $(value)$([end-if-specified])"/>
+	<TemplateConversion template="$(name.validateIdentifier)$([if-specified]value) := $(value)$([end-if-specified])"/>
   </FormatTemplate>
   <FormatTemplate name="checkForArray">
     <ConditionalConversion condition="$(isArray)" template="$(name)Array"/>
