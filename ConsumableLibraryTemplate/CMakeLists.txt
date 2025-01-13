@@ -68,7 +68,10 @@ target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined)
 #### quick and dirty solution to make preview projects compilable with plcncli#########
 if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
 	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
-	set(PKG_CONFIG_EXECUTABLE ${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config.exe)
+	set(PKG_CONFIG_EXECUTABLE "${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config.exe")
+else()
+	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
+	set(PKG_CONFIG_EXECUTABLE "${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config")
 endif()
 #######################################################################################
 
@@ -78,11 +81,12 @@ find_package(Arp QUIET)
 find_package(ArpDevice REQUIRED)
 find_package(ArpProgramming REQUIRED)
 
-if(Arp_FOUND)
+if(ArpBase_FOUND)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Arp::ALL)
 else()
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
-endif()   
+endif()
+
 #######################################################################################
 
 ################# configure cmake package config files ################################
