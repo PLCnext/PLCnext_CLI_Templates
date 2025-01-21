@@ -101,7 +101,7 @@
     <CallTarget Targets="CheckPLCnextTools" Condition="Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
   </Target>
 
-  <Import Project="$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets" />
+  <Import Project="$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets" Condition="Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)eCLR\PLCnext.targets')"/>
   
 
 </Project>
