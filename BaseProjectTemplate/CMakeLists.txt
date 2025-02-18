@@ -10,13 +10,13 @@ endif()
 
 file(GLOB_RECURSE Headers CONFIGURE_DEPENDS src/*.h src/*.hpp src/*.hxx intermediate/code/*.h intermediate/code/*.hpp intermediate/code/*.hxx)
 file(GLOB_RECURSE Sources CONFIGURE_DEPENDS src/*.cpp intermediate/code/*.cpp)
-add_library(${CMAKE_PROJECT_NAME} SHARED ${Headers} ${Sources})
+add_library(${PROJECT_NAME} SHARED ${Headers} ${Sources})
 
 #######################################################################################
 
 ################# project include-paths ###############################################
 
-target_include_directories(${CMAKE_PROJECT_NAME}
+target_include_directories(${PROJECT_NAME}
     PUBLIC
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/intermediate/code>
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>)
@@ -50,7 +50,8 @@ endif()
 #          the firmware will crash and there will be NO indication why it crashed.    #
 #######################################################################################
 
-target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined)
+target_link_options(${PROJECT_NAME} PRIVATE LINKER:--no-undefined)    
+target_link_options(${PROJECT_NAME} PRIVATE LINKER:--as-needed)
 
 #######################################################################################
                           
@@ -71,17 +72,16 @@ find_package(ArpDevice REQUIRED)
 find_package(ArpProgramming REQUIRED)
 
 if(ArpBase_FOUND)
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE Arp::ALL)
+target_link_libraries(${PROJECT_NAME} PRIVATE Arp::ALL)
 else()
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
-endif()
-
+target_link_libraries(${PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
+endif()   
 #######################################################################################
 
 ################# install ############################################################
 
 string(REGEX REPLACE "^.*\\(([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*$" "\\1" _ARP_SHORT_DEVICE_VERSION ${ARP_DEVICE_VERSION})
-install(TARGETS ${CMAKE_PROJECT_NAME}
+install(TARGETS ${PROJECT_NAME}
     LIBRARY DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/lib
     ARCHIVE DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/lib
     RUNTIME DESTINATION ${ARP_DEVICE}_${_ARP_SHORT_DEVICE_VERSION}/$<CONFIG>/bin)

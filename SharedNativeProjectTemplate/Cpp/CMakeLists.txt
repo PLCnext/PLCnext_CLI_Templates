@@ -56,7 +56,8 @@ endif()
 #          the firmware will crash and there will be NO indication why it crashed.    #
 #######################################################################################
 
-target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined)
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--no-undefined) 
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE LINKER:--as-needed)
 
 #######################################################################################
 
