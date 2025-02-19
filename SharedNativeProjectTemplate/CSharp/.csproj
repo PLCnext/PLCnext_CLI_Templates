@@ -97,7 +97,7 @@
   </PropertyGroup>
 
   <Target Name="PLCnextMain">
-    <Error Text="PLCnext toolchain file PLCnext.targets is missing. Reinstall the PLCnCLI!" Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
+    <Error Text="PLCnext toolchain is not installed correctly. 'PLCnext.targets' file is missing. Reinstall the toolchain!" Condition="!Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
     <CallTarget Targets="CheckPLCnextTools" Condition="Exists('$(format.$)(PLCNEXT_TOOLCHAIN_INSTALLDIR)\eCLR\PLCnext.targets')" />
   </Target>
 
