@@ -1,4 +1,4 @@
-﻿cmake_minimum_required(VERSION 3.13)
+﻿cmake_minimum_required(VERSION 3.27)
 
 project($(name))
 
@@ -34,13 +34,7 @@ list(INSERT CMAKE_MODULE_PATH 0 "${ARP_TOOLCHAIN_CMAKE_MODULE_PATH}")
 # installed in the default install locations on the target.                           #
 #######################################################################################
 
-if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows" AND NOT "$ENV{SHELL}" MATCHES ".*[\/\\]bash($|.exe$)")
-    # With Windows there is a known issue with CMake: https://gitlab.kitware.com/cmake/cmake/-/issues/21291
-    # This is currently the only way to set the RPATH to $ORIGIN in Windows
-    target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE "-Wl,-rpath,\$$ORIGIN")
-else()
-    set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES INSTALL_RPATH $ORIGIN)
-endif()
+set_target_properties(${PROJECT_NAME} PROPERTIES INSTALL_RPATH $ORIGIN)
 
 #######################################################################################
 
