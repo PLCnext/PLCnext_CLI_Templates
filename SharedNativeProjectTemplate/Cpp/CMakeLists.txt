@@ -55,26 +55,16 @@ target_link_options(${PROJECT_NAME} PRIVATE LINKER:--as-needed)
 
 #######################################################################################
 
-#### quick and dirty solution to make preview projects compilable with plcncli#########
-if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
-	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
-	set(PKG_CONFIG_EXECUTABLE "${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config.exe")
-else()
-	set(ENV{PKG_CONFIG_PATH} "${ARP_TOOLCHAIN_TARGET_SYSROOT}/usr/lib/pkgconfig")
-	set(PKG_CONFIG_EXECUTABLE "${ARP_TOOLCHAIN_NATIVE_SYSROOT}/usr/bin/pkg-config")
-endif()
-#######################################################################################
-
 ################# add link targets ####################################################
 
-find_package(Arp QUIET)
 find_package(ArpDevice REQUIRED)
-find_package(ArpProgramming REQUIRED)
 
-if(ArpBase_FOUND)
-target_link_libraries(${PROJECT_NAME} PRIVATE Arp::ALL)
+if(${ARP_VERSION_MAJOR} GREATER_EQUAL "25")
+    find_package(Arp REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE Arp::ALL)
 else()
-target_link_libraries(${PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
+    find_package(ArpProgramming REQUIRED)
+    target_link_libraries(${PROJECT_NAME} PRIVATE ArpDevice ArpProgramming)
 endif()
 
 #######################################################################################
