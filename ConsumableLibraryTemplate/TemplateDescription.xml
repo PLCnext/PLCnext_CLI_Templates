@@ -9,8 +9,10 @@
   <File name="Config.cmake.in" template="Config.cmake.in"/>
   <File name="How_to_use.txt" template="How_to_use.txt"/>
   <File name="ADD_PUBLIC_HEADERS_HERE.txt" template="ADD_PUBLIC_HEADERS_HERE" path="include"/>
-  <File name="$(name)Class.cpp" template="Class.cpp" path="src"/>
-  <File name="$(name)Class.hpp" template="Class.hpp" key="class" path="include/$(name)"/>
+  <Folder name="src"/>
+  <File name="$(name)Class.cpp" template="Class.cpp" path="src" excludedForEmptyTemplate="true"/>
+  <Folder name="include"/>
+  <File name="$(name)Class.hpp" template="Class.hpp" key="class" path="include/$(name)" excludedForEmptyTemplate="true"/>
   <Description>Create a new consumable library. The consumable library is a template, that creates a library which can be used by other projects. More help available in the PLCnext Community.</Description>
   <Example>
     <Arguments>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TemplateDescription name="acfcomponent" basedOn="basecomponent" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.1.762" version="1.1" isRelevantForProjectNamespace="true" xmlns="http://www.phoenixcontact.com/schema/clitemplates">
   <Relationship name="project" type="acfproject"/>
-  <File name="$(name).cpp" template="Component.cpp" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
-  <File name="$(name).hpp" template="Component.hpp" key="component" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])"/>
+  <Folder name="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])" />
+  <File name="$(name).cpp" template="Component.cpp" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])" excludedForEmptyTemplate="true"/>
+  <File name="$(name).hpp" template="Component.hpp" key="component" path="$([if-exist]output)$(output)$([else])$(path)$([end-if-exist])" excludedForEmptyTemplate="true"/>
   <GeneratedFile name="$(name).compmeta"  template="Component.compmeta"   
 				 generator="Config" path="$(name)" deployPath="../../config/$(name)"/>
   <GeneratedFile name="$(name).meta.cpp" template="../BaseComponentTemplate/Component.meta.cpp"
