@@ -65,6 +65,7 @@
 	    <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is used, a project configuration file will be ignored."/>
 	    <Argument name="engineerversion" has-value="true" short-name="e" help="The version of the PLCnext Engineer for which this library shall be built." />
 	    <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
+      <Argument name="libraryinfo" has-value="true" multiplicity="OneOrMore" separator="|" help="Additional key-value pairs which will be shown in the library. key-value pairs are separated with '|'. Key and value are separated with '=' e.g. mykey=myvalue|otherkey=othervalue" />
       <!--signing options -->
       <Argument name="sign" has-value="false" help="Set this option if the resulting library shall be signed. A private key, public key and at least one certificate need to be provided. They can be combined in one PKCS#12 archive or provided as separate PEM files. Set either --timestamp and provide a timestamp server through --timestampconfiguration to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
       <Argument name="pkcs12" has-value="true" multiplicity="One" help="Path to PKCS#12 archive containing the private and public key and certificates for signing." />

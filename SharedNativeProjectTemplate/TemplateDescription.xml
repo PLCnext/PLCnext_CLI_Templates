@@ -32,6 +32,7 @@
       <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
       <Argument name="excludefiles" has-value="true" short-name="x" multiplicity="OneOrMore" separator=" " help="Files that should not be deployed. Files are separated by ' '. Will be excluded for all targets for which the deploy is executed. It can contain the wildcard '*'. This option will be ignored if 'files' option is used."/>
       <Argument name="msbuild" has-value="true" help="Path to msbuild."/>
+      <Argument name="libraryinfo" has-value="true" multiplicity="OneOrMore" separator="|" help="Additional key-value pairs which will be shown in the library. key-value pairs are separated with '|'. Key and value are separated with '=' e.g. mykey=myvalue|otherkey=othervalue" />
       <!--signing options -->
       <Argument name="sign" has-value="false" help="Set this option if the resulting library shall be signed. A private key, public key and at least one certificate need to be provided. They can be combined in one PKCS#12 archive or provided as separate PEM files. Set either --timestamp and provide a timestamp server through --timestampconfiguration to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
       <Argument name="pkcs12" has-value="true" multiplicity="One" help="Path to PKCS#12 archive containing the private and public key and certificates for signing." />
