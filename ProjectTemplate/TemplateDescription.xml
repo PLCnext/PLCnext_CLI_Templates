@@ -82,7 +82,7 @@
       <Argument name="publickey" has-value="true" multiplicity="One" help="Path to PEM file containing the public key." />
       <Argument name="certificates" has-value="true" multiplicity="OneOrMore" separator="," help="Paths to PEM files containing certificates. Separated by ','." />
       <Argument name="timestamp" has-value="false" help="Set either this option to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
-      <Argument name="notimestamp" has-value="false" help="Set either this option to get a CAdES-B signature or set '--timestampserver' and provide '--timestampconfiguration' to get CAdES-T." />
+      <Argument name="notimestamp" has-value="false" help="Set either this option to get a CAdES-B signature or set '--timestamp' and provide '--timestampconfiguration' to get CAdES-T." />
       <Argument name="password" has-value="true" multiplicity="One" help="Password for private key file. If not set user will be prompted to enter the password when executing command." />
       <Argument name="timestampconfiguration" has-value="true" multiplicity="One" help="Path to timestamp configuration file (.json) for setting e.g. timestampserver uri, proxy settings... See info center for details." />
     </Arguments>
