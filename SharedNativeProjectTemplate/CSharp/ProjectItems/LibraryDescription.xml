@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Library Description="$(name)">
+<Library>
   <ToolboxCategories>
     <!--<ToolboxCategory Id="Category1ID" Name="Folder Name"/>-->
     <!--<ToolboxCategory Id="Category2ID" Name="Folder Name\SubFolder Name"/>-->
