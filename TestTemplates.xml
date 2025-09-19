@@ -17,6 +17,6 @@
 	<Include type="Template">SharedNativeProjectTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">SharedNativeFunctionTemplate/TemplateDescription.xml</Include>
 	<Include type="Template">SharedNativeFunctionBlockTemplate/TemplateDescription.xml</Include>
-	<Include type="Format">SharedNativeProjectTemplate/FormatTemplates.xml</Include>
-	<Include type="Template">TestTemplate/TemplateDescription.xml</Include>
+    <Include type="Format">SharedNativeProjectTemplate/FormatTemplates.xml</Include>
+    <Include type="Template">../TestTemplates/TestTemplate/TemplateDescription.xml</Include>
 </Templates>
