@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectSettings xmlns="http://www.phoenixcontact.com/schema/cliproject">
+  <Type>fieldbusproject</Type>
+  <Version>$(toolprojectversion)</Version>
+  <Name>$(name)</Name>
+  <GenerateNamespaces>true</GenerateNamespaces>
+</ProjectSettings>

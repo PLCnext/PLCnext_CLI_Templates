@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TemplateDescription name="fieldbusproject" isRoot="true" basedOn="baseproject" supportedFirmwareVersions="19.0.0.16199" requiredCliVersion="19.0.0.660" version="1.0"
+                     xmlns="http://www.phoenixcontact.com/schema/clitemplates" identifier="ProjectSettingsIdentifier">
+    
+    <Arguments>
+        <Argument name="component" has-value="true" short-name="c" help="The name of the component which will be automatically created." default="$(name.format.lastNamespacePart)Component">
+            <ValueRestriction min-length="2" max-length="128" description="This must be a valid C++ type name. It must start with an upper case letter.">
+                <Pattern>^[A-Z](?!.*__)[a-zA-Z0-9_]*$</Pattern>
+            </ValueRestriction>
+        </Argument>
+        <Argument name="namespace" help="The root namespace for the $(template.name). It is used to resolve the initial component namespace." />
+    </Arguments>
+    <AddTemplate template="fieldbuscomponent">
+        <Arguments>
+            <Argument name="name" value="$(component)"/>
+            <Argument name="namespace" value="$(namespace)"/>
+        </Arguments>
+    </AddTemplate>
+    <File name="plcnext.proj" template=".proj"/>
+    <File name="CMakeLists.txt" template="CMakeLists.txt"/>
+    <Folder name="src"/>
+    <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.cpp" template="Library.cpp"
+                   generator="code" aggregated="generated.cpp" />
+    <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
+                   generator="code" aggregated="generated.hpp"
+                   key="library"/>
+    <Description>Create a new fieldbusproject.The fieldbusproject is a template for the development of fieldbus components. More info available in the PLCnext Community.</Description>
+    <Example>
+        <Arguments>
+            <Argument name="name" value="ProjectName"/>
+        </Arguments>
+        <Description>creates a new fieldbusproject in the directory 'ProjectName' with the component 'ProjectNameComponent' in the namespace 'ProjectName'</Description>
+    </Example>
+    <Example>
+        <Arguments>
+            <Argument name="name" value="ProjectName"/>
+            <Argument name="component" value="SomeComponent"/>
+            <Argument name="namespace" value="SomeNamespace"/>
+        </Arguments>
+        <Description>creates a new fieldbusproject in the directory 'ProjectName' with the component 'SomeComponent' in the namespace 'SomeNamespace'</Description>
+    </Example>
+    <GenerateStep generator="config">
+        <Arguments>
+            <Argument name="no-datatypes-worksheet" help="Add this flag if a datatypes worksheet shall NOT be generated."/>
+        </Arguments>
+    </GenerateStep>
+    <DeployPostStep identifier="AcfLibraryBuilderDeployStep">
+        <Arguments>
+            <Argument name="id" has-value="true" short-name="i" help="The GUID for the library. If this option is not used, the id stored in the project settings file will be used instead."/>
+            <Argument name="librarydescription" has-value="true" short-name="d" help="A description of the library. If this option is used, a project configuration file will be ignored. Use \n for linebreak and \&quot; for quotation mark "/>
+            <Argument name="libraryversion" has-value="true" short-name="v" help="The version of the library. If this option is used, a project configuration file will be ignored."/>
+            <Argument name="engineerversion" has-value="true" short-name="e" help="The version of the PLCnext Engineer for which this library shall be built." />
+            <Argument name="solutionversion" has-value="true" help="The AdeSolutionVersion for which this library shall be built. Can not be used together with --engineerversion." />
+            <Argument name="libraryinfo" has-value="true" multiplicity="OneOrMore" separator="|" help="Additional key-value pairs which will be shown in the library. key-value pairs are separated with '|'. Key and value are separated with '=' e.g. mykey=myvalue|otherkey=othervalue" />
+            <!--signing options -->
+            <Argument name="sign" has-value="false" help="Set this option if the resulting library shall be signed. A private key, public key and at least one certificate need to be provided. They can be combined in one PKCS#12 archive or provided as separate PEM files. Set either --timestamp and provide a timestamp server through --timestampconfiguration to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
+            <Argument name="pkcs12" has-value="true" multiplicity="One" help="Path to PKCS#12 archive containing the private and public key and certificates for signing." />
+            <Argument name="privatekey" has-value="true" multiplicity="One" help="Path to PEM file containing the private key." />
+            <Argument name="publickey" has-value="true" multiplicity="One" help="Path to PEM file containing the public key." />
+            <Argument name="certificates" has-value="true" multiplicity="OneOrMore" separator="," help="Paths to PEM files containing certificates. Separated by ','." />
+            <Argument name="timestamp" has-value="false" help="Set either this option and provide '--timestampconfiguration' to get a CAdES-T signature or set '--notimestamp' to get CAdES-B." />
+            <Argument name="notimestamp" has-value="false" help="Set either this option to get a CAdES-B signature or set '--timestamp' to get CAdES-T." />
+            <Argument name="password" has-value="true" multiplicity="One" help="Password for private key file. If not set user will be prompted to enter the password when executing command." />
+            <Argument name="timestampconfiguration" has-value="true" multiplicity="One" help="Path to timestamp configuration file (.json) for setting e.g. timestampserver uri, proxy settings... See info center for details." />
+        </Arguments>
+    </DeployPostStep>
+</TemplateDescription>
