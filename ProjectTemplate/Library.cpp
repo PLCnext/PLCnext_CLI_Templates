@@ -27,6 +27,9 @@ $([foreach]component[in]related[of-type]basecomponent)
     this->componentFactory.AddFactoryMethod(CommonTypeName<::$(component.fullName)>(), &::$(component.fullName)::Create);
 $([end-foreach])
 #else
+#if ARP_ABI_VERSION_MAJOR >= 3 || ARP_ABI_VERSION_MINOR >= 1
+    this->SetSdkBuildInfo(ARP_VERSION_BUILT, ARP_ABI_VERSION_NAME, ARP_TARGET_IDENTIFIER);
+#endif
 $([foreach]component[in]related[of-type]basecomponent) 
     this->AddComponentType<::$(component.fullName)>();
 $([end-foreach])
