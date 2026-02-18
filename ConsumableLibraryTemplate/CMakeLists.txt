@@ -17,8 +17,8 @@ add_library(${PROJECT_NAME} SHARED ${Headers} ${PublicHeaders} ${Sources})
 
 ################# set install directories #############################################
 
-set(INCLUDE_INSTALL_DIR ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION}/${CMAKE_BUILD_TYPE}/include)
-set(LIB_INSTALL_DIR ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION}/${CMAKE_BUILD_TYPE}/lib/${PROJECT_NAME})
+set(INCLUDE_INSTALL_DIR ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION_BUILD}/${CMAKE_BUILD_TYPE}/include)
+set(LIB_INSTALL_DIR ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION_BUILD}/${CMAKE_BUILD_TYPE}/lib/${PROJECT_NAME})
 
 #######################################################################################
 
@@ -81,7 +81,7 @@ include(CMakePackageConfigHelpers)
 configure_package_config_file( 
   "Config.cmake.in" 
   "${PROJECT_NAME}Config.cmake"
-  INSTALL_DESTINATION ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION}/${CMAKE_BUILD_TYPE}/cmake
+  INSTALL_DESTINATION ${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION_BUILD}/${CMAKE_BUILD_TYPE}/cmake
   PATH_VARS
     INCLUDE_INSTALL_DIR
 	LIB_INSTALL_DIR
@@ -122,7 +122,7 @@ install(EXPORT ${PROJECT_NAME}-targets DESTINATION ${LIB_INSTALL_DIR})
 install(
   FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
         "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-  DESTINATION "${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION}/${CMAKE_BUILD_TYPE}/cmake"
+  DESTINATION "${ARP_DEVICE}_${ARP_DEVICE_SHORT_VERSION_BUILD}/${CMAKE_BUILD_TYPE}/cmake"
   )
 
 #######################################################################################
