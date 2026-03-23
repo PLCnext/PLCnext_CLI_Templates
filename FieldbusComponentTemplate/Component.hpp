@@ -36,9 +36,9 @@ using namespace Arp::Plc::Domain::Commons;
 class $(name) : public IoComponentBase, public IControllerComponent, private Loggable<$(name)>
 {
 public: // usings
-    using Settings = Apps::Demo::Fieldbus::Internal::Settings::FieldbusSettings;
-    using FieldbusDomain = DualDomain<Apps::Demo::Fieldbus::Internal::FieldbusData>;
-    using DataExchange = Apps::Demo::Fieldbus::Internal::DataExchange;
+    using Settings = Internal::Settings::FieldbusSettings;
+    using FieldbusDomain = DualDomain<Internal::FieldbusData>;
+    using DataExchange = Internal::DataExchange;
     
 public: // construction/destruction
 
