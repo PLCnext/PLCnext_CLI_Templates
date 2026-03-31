@@ -24,6 +24,8 @@
     <GeneratedFile name="$(name.format.lastNamespacePart.format.escapeProjectName)Library.hpp" template="Library.hpp"
                    generator="code" aggregated="generated.hpp"
                    key="library"/>
+    <GeneratedFile name="$(namespace).libmeta"  template="Library.libmeta"
+                   generator="Config" deployPath="../../config"/>
     <Description>Create a new fieldbusproject.The fieldbusproject is a template for the development of fieldbus components. More info available in the PLCnext Community.</Description>
     <Example>
         <Arguments>
